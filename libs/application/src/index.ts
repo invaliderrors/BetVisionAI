@@ -30,3 +30,5 @@ export * from './competitions/list-competitions.use-case';
 export * from './competitions/get-competition-seasons.use-case';
 // features (Phase 9 — feature engineering pipeline)
 export * from './features/compute-features.use-case';
+// predictions (Phase 10 — statistical prediction engine)
+export * from './predictions/run-prediction.use-case';
