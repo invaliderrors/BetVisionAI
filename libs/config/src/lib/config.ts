@@ -19,6 +19,15 @@ export const DATA_SOURCE_MODES = ['dev', 'live'] as const;
 export type DataSourceMode = (typeof DATA_SOURCE_MODES)[number];
 
 /**
+ * Which LLM adapter backs the AI-report explanation layer (Phase 12). `dev` (default) binds the
+ * DETERMINISTIC TemplateLlmAdapter — no API key, no network — which is what runs and is tested
+ * here. `live` binds the AnthropicLlmAdapter (requires ANTHROPIC_API_KEY). The LLM only EXPLAINS
+ * the persisted numbers; it never produces or alters one.
+ */
+export const LLM_MODES = ['dev', 'live'] as const;
+export type LlmMode = (typeof LLM_MODES)[number];
+
+/**
  * DI token for the resolved {@link AppConfig}. It is a plain `Symbol`, so it stays
  * framework-agnostic (works with NestJS `@Inject(APP_CONFIG)` without importing Nest here).
  */
@@ -39,6 +48,7 @@ const envSchema = z.object({
   JWT_REFRESH_TTL: z.coerce.number().int().positive().default(604800),
   DEFAULT_LOCALE: z.enum(SUPPORTED_LOCALES).default('en'),
   DATA_SOURCE_MODE: z.enum(DATA_SOURCE_MODES).default('dev'),
+  LLM_MODE: z.enum(LLM_MODES).default('dev'),
   // Optional provider / LLM keys — present in prod, absent in most local/test runs.
   ANTHROPIC_API_KEY: z.string().optional(),
   SPORTS_DATA_API_KEY: z.string().optional(),
@@ -79,6 +89,7 @@ export interface AppConfig {
   readonly jwt: JwtConfig;
   readonly defaultLocale: SupportedLocale;
   readonly dataSourceMode: DataSourceMode;
+  readonly llmMode: LlmMode;
   readonly anthropicApiKey?: string;
   readonly providerKeys: ProviderKeys;
 }
@@ -127,6 +138,7 @@ export function loadConfig(
     },
     defaultLocale: env.DEFAULT_LOCALE,
     dataSourceMode: env.DATA_SOURCE_MODE,
+    llmMode: env.LLM_MODE,
     anthropicApiKey: env.ANTHROPIC_API_KEY,
     providerKeys: {
       sportsData: env.SPORTS_DATA_API_KEY,

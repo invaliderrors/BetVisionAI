@@ -28,6 +28,8 @@ describe('loadConfig', () => {
     expect(config.jwt.accessTtlSeconds).toBe(900); // default applied
     expect(config.jwt.refreshTtlSeconds).toBe(604800); // default applied
     expect(config.dataSourceMode).toBe('dev'); // default applied
+    expect(config.llmMode).toBe('dev'); // default applied
+    expect(config.anthropicApiKey).toBeUndefined();
     expect(config.providerKeys.odds).toBeUndefined();
   });
 
@@ -37,6 +39,17 @@ describe('loadConfig', () => {
     expect(() => loadConfig({ ...validEnv(), DATA_SOURCE_MODE: 'satellite' })).toThrow(
       EnvValidationError,
     );
+  });
+
+  it('parses an explicit LLM_MODE (+ optional ANTHROPIC_API_KEY) and rejects an unknown one', () => {
+    const live = loadConfig({
+      ...validEnv(),
+      LLM_MODE: 'live',
+      ANTHROPIC_API_KEY: 'sk-ant-test',
+    });
+    expect(live.llmMode).toBe('live');
+    expect(live.anthropicApiKey).toBe('sk-ant-test');
+    expect(() => loadConfig({ ...validEnv(), LLM_MODE: 'gpt' })).toThrow(EnvValidationError);
   });
 
   it('applies documented defaults for optional values', () => {
