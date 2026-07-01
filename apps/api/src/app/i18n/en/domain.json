@@ -1,0 +1,21 @@
+{
+  "vo": {
+    "probability_out_of_range": "Probability must be between {min} and {max}, but got {value}.",
+    "odds_not_greater_than_one": "Odds must be greater than {bound}, but got {value}.",
+    "implied_probability_out_of_range": "Implied probability must be between {min} and {max}, but got {value}.",
+    "edge_out_of_range": "Edge must be between {min} and {max}, but got {value}.",
+    "stake_out_of_range": "Stake must be between {min} and {max}, but got {value}.",
+    "stake_exceeds_cap": "Stake {rawFraction} exceeds the maximum allowed cap of {maxStakePctCap}.",
+    "money_invalid_amount": "Monetary amount must be a whole number of minor units, but got {value}.",
+    "money_currency_mismatch": "Amounts in different currencies cannot be combined.",
+    "risk_appetite_out_of_range": "Risk appetite must be between {min} and {max}, but got {value}.",
+    "risk_appetite_not_integer": "Risk appetite must be a whole number, but got {value}.",
+    "not_finite_number": "The value for {field} must be a finite number."
+  },
+  "value": {
+    "no_value_found": "No value bet was found for the selected risk level."
+  },
+  "prediction": {
+    "market_not_supported": "The requested market is not supported."
+  }
+}

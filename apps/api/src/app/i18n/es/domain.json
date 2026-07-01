@@ -1,0 +1,21 @@
+{
+  "vo": {
+    "probability_out_of_range": "La probabilidad debe estar entre {min} y {max}, pero se recibió {value}.",
+    "odds_not_greater_than_one": "La cuota debe ser mayor que {bound}, pero se recibió {value}.",
+    "implied_probability_out_of_range": "La probabilidad implícita debe estar entre {min} y {max}, pero se recibió {value}.",
+    "edge_out_of_range": "El margen (edge) debe estar entre {min} y {max}, pero se recibió {value}.",
+    "stake_out_of_range": "La apuesta debe estar entre {min} y {max}, pero se recibió {value}.",
+    "stake_exceeds_cap": "La apuesta {rawFraction} supera el límite máximo permitido de {maxStakePctCap}.",
+    "money_invalid_amount": "El importe debe ser un número entero de unidades menores, pero se recibió {value}.",
+    "money_currency_mismatch": "No se pueden combinar importes en monedas diferentes.",
+    "risk_appetite_out_of_range": "El nivel de riesgo debe estar entre {min} y {max}, pero se recibió {value}.",
+    "risk_appetite_not_integer": "El nivel de riesgo debe ser un número entero, pero se recibió {value}.",
+    "not_finite_number": "El valor de {field} debe ser un número finito."
+  },
+  "value": {
+    "no_value_found": "No se encontró ninguna apuesta de valor para el nivel de riesgo seleccionado."
+  },
+  "prediction": {
+    "market_not_supported": "El mercado solicitado no es compatible."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "is_not_empty": "{field} should not be empty.",
+  "is_string": "{field} must be a string.",
+  "is_int": "{field} must be an integer.",
+  "is_number": "{field} must be a number.",
+  "min": "{field} must not be less than {min}.",
+  "max": "{field} must not be greater than {max}."
+}

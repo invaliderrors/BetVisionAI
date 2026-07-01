@@ -1,0 +1,10 @@
+{
+  "internal": "Ocurrió un error inesperado. Inténtalo de nuevo más tarde.",
+  "bad_request": "La solicitud no es válida.",
+  "validation": "Uno o más campos no son válidos.",
+  "unauthorized": "Se requiere autenticación.",
+  "forbidden": "No tienes permiso para realizar esta acción.",
+  "not_found": "No se encontró el recurso solicitado.",
+  "service_unavailable": "El servicio no está disponible temporalmente.",
+  "too_many_requests": "Demasiadas solicitudes. Por favor, reduce la frecuencia."
+}

@@ -1,0 +1,10 @@
+{
+  "internal": "An unexpected error occurred. Please try again later.",
+  "bad_request": "The request is invalid.",
+  "validation": "One or more fields are invalid.",
+  "unauthorized": "Authentication is required.",
+  "forbidden": "You do not have permission to perform this action.",
+  "not_found": "The requested resource was not found.",
+  "service_unavailable": "The service is temporarily unavailable.",
+  "too_many_requests": "Too many requests. Please slow down."
+}
