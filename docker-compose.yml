@@ -70,9 +70,8 @@ services:
       redis:
         condition: service_healthy
     healthcheck:
-      # Hits the default Nest route (global prefix `api`). Swap to /api/health
-      # once the Phase 2 health endpoint lands.
-      test: ["CMD-SHELL", "wget -qO- http://localhost:3000/api >/dev/null 2>&1 || exit 1"]
+      # Phase 2 liveness endpoint (global prefix `api`).
+      test: ["CMD-SHELL", "wget -qO- http://localhost:3000/api/health >/dev/null 2>&1 || exit 1"]
       interval: 15s
       timeout: 5s
       retries: 5
