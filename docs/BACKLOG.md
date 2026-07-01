@@ -4,7 +4,6 @@ Running list of known follow-ups deliberately deferred during the phased build. 
 
 ## Domain / Data
 
-- **Match aggregate is minimal.** Carries team names + `competitionId` but not `homeTeamId`/`awayTeamId`/`seasonId`/`status`. `PrismaMatchRepository.save()` currently resolves teams by name (create-if-missing) and attaches to the *latest* season of the competition — a documented stopgap. *Deferred in Phase 4 → resolve in Phase 6 (Teams & Matches).*
 - **Market taxonomy divergence.** Three taxonomies disagree: domain `MarketKey` union (e.g. `DOUBLE_CHANCE`, `CORRECT_SCORE`), the schema-design catalog keys (`DC`, `CS`, `OU_4_5`), and the persistence `MarketGroup` enum (8 values) vs domain `MarketGroup` (6). Phase 4 made `BettingMarket.key` follow the domain union so FKs resolve. Reconcile with an explicit mapping value object. *Deferred in Phase 4 → resolve in Phase 6/11.*
 - **Elo / Poisson services are interface stubs.** `EloRatingService` and `PoissonGoalModel` are interfaces + TODO only. *Deferred in Phase 3 → implement in Phase 10 (statistical engine).*
 
@@ -25,7 +24,13 @@ Running list of known follow-ups deliberately deferred during the phased build. 
 - **OAuth / MFA (TOTP) not implemented.** SPEC lists them as optional. *Deferred in Phase 5 → Phase 18 / later.*
 - **Full rate-limit hardening.** Only lenient throttling is wired; brute-force lockout, captcha, CORS allow-list are pending. *Deferred in Phase 5 → Phase 18.*
 
+## API / UX (from Phase 6)
+
+- **Endpoint publicity.** All `matches`/`teams`/`competitions` endpoints are `JwtAuthGuard`-protected. SPEC UX implies landing-page fixture **search** may be public — flip `GET /matches/search` (and possibly `teams` search) to public when the landing page is wired. *Deferred in Phase 6 → Phase 14.*
+- **Team stats / odds summary are stubs.** `GET /teams/:id/stats` returns an empty-safe typed stub and `matchDetail.oddsSummary` is `{available:false}` until ingestion/feature jobs and odds land. *Deferred in Phase 6 → Phases 8–11.*
+
 ## Resolved
 
+- ~~Match aggregate was minimal / name-resolution stopgap~~ — fleshed out with real FK ids in Phase 6 (round-trip test proves persisted `homeTeamId`/`seasonId` match input).
 - ~~API readiness DB check stub~~ — wired to a real Prisma `SELECT 1` in Phase 4.
 - ~~Worker reused API HTTP bootstrap~~ — converted to standalone context in Phase 2.
