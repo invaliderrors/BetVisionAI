@@ -33,9 +33,12 @@ export * from './fakes/fake-prediction-input-repository';
 // predictions (Phase 10)
 export * from './fakes/fake-prediction-repository';
 export * from './fakes/fake-prediction-result-repository';
+// value betting (Phase 11)
+export * from './fakes/fake-recommendation-repository';
 // object mothers
 export * from './mothers/vo.mother';
 export * from './mothers/model-score.mother';
 export * from './mothers/match.mother';
 export * from './mothers/explanation.mother';
 export * from './mothers/feature.mother';
+export * from './mothers/value-betting.mother';
