@@ -17,5 +17,23 @@
   },
   "prediction": {
     "market_not_supported": "El mercado solicitado no es compatible."
+  },
+  "auth": {
+    "email_invalid": "Introduce una dirección de correo electrónico válida.",
+    "password_too_short": "La contraseña debe tener al menos {min} caracteres.",
+    "password_too_weak": "La contraseña debe incluir mayúsculas y minúsculas, un número y un símbolo.",
+    "password_hash_invalid": "Las credenciales almacenadas no son válidas.",
+    "age_not_confirmed": "Debes confirmar que tienes la edad legal para registrarte.",
+    "terms_not_accepted": "Debes aceptar los Términos y Condiciones para registrarte.",
+    "registration_failed": "No se pudo completar el registro. Revisa tus datos e inténtalo de nuevo.",
+    "invalid_credentials": "Correo electrónico o contraseña no válidos.",
+    "account_not_active": "Esta cuenta no está activa.",
+    "invalid_refresh_token": "Tu sesión ha expirado. Inicia sesión de nuevo.",
+    "invalid_reset_token": "Este enlace de restablecimiento de contraseña no es válido o ha expirado.",
+    "forbidden": "No tienes permiso para realizar esta acción."
+  },
+  "user": {
+    "not_found": "Usuario no encontrado.",
+    "self_limit_empty": "Proporciona al menos un límite de juego responsable."
   }
 }

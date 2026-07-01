@@ -17,5 +17,23 @@
   },
   "prediction": {
     "market_not_supported": "The requested market is not supported."
+  },
+  "auth": {
+    "email_invalid": "Please enter a valid email address.",
+    "password_too_short": "Password must be at least {min} characters long.",
+    "password_too_weak": "Password must include upper- and lower-case letters, a number, and a symbol.",
+    "password_hash_invalid": "Stored credentials are invalid.",
+    "age_not_confirmed": "You must confirm you are of legal age to register.",
+    "terms_not_accepted": "You must accept the Terms & Conditions to register.",
+    "registration_failed": "Registration could not be completed. Please check your details and try again.",
+    "invalid_credentials": "Invalid email or password.",
+    "account_not_active": "This account is not active.",
+    "invalid_refresh_token": "Your session has expired. Please sign in again.",
+    "invalid_reset_token": "This password reset link is invalid or has expired.",
+    "forbidden": "You do not have permission to perform this action."
+  },
+  "user": {
+    "not_found": "User not found.",
+    "self_limit_empty": "Provide at least one responsible-gambling limit."
   }
 }
