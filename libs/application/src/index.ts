@@ -16,3 +16,15 @@ export * from './users/update-profile.use-case';
 export * from './users/set-self-limit.use-case';
 export * from './users/export-user-data.use-case';
 export * from './users/delete-account.use-case';
+// teams & matches (Phase 6)
+export * from './matches/fixture-text';
+export * from './matches/match.mapper';
+export * from './matches/resolve-fixture.use-case';
+export * from './matches/get-match-detail.use-case';
+export * from './teams/team.mapper';
+export * from './teams/search-teams.use-case';
+export * from './teams/get-team-detail.use-case';
+export * from './teams/get-team-stats.use-case';
+export * from './competitions/competition.mapper';
+export * from './competitions/list-competitions.use-case';
+export * from './competitions/get-competition-seasons.use-case';
