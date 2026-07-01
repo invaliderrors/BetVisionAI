@@ -21,6 +21,11 @@ export * from './fakes/fake-audit-log';
 export * from './fakes/fake-notification.port';
 export * from './fakes/fake-i18n.port';
 export * from './fakes/fake-event-bus';
+// auth / accounts (Phase 5)
+export * from './fakes/fake-user-repository';
+export * from './fakes/fake-password-hasher';
+export * from './fakes/fake-token-service';
+export * from './fakes/fake-refresh-token-store';
 // object mothers
 export * from './mothers/vo.mother';
 export * from './mothers/model-score.mother';
