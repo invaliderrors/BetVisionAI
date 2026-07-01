@@ -6,6 +6,11 @@
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "@nestjs/common": "^11.0.0",
+    "ioredis": "^5.11.1",
+    "@betvision/config": "0.0.1",
+    "@betvision/domain": "0.0.1",
+    "@betvision/shared": "0.0.1"
   }
 }
