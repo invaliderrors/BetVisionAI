@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "BetVision AI — Análisis de fútbol calibrado",
+    "description": "Análisis probabilístico de fútbol. Cuotas calibradas, ventajas honestas, sin garantías."
+  },
+  "common": {
+    "brand": "BetVision AI",
+    "loading": "Cargando",
+    "retry": "Reintentar",
+    "signIn": "Iniciar sesión",
+    "signOut": "Cerrar sesión",
+    "account": "Cuenta",
+    "language": "Idioma",
+    "comingSoon": "Próximamente"
+  },
+  "localeName": {
+    "en": "English",
+    "es": "Español"
+  },
+  "nav": {
+    "dashboard": "Panel",
+    "matches": "Partidos",
+    "history": "Historial",
+    "settings": "Ajustes"
+  },
+  "errors": {
+    "internal": "Algo salió mal de nuestro lado. Inténtalo de nuevo.",
+    "bad_request": "No se pudo procesar esa solicitud.",
+    "validation": "Revisa los campos marcados.",
+    "unauthorized": "Tu sesión ha expirado. Inicia sesión de nuevo.",
+    "forbidden": "No tienes acceso a eso.",
+    "not_found": "No encontramos lo que buscabas.",
+    "service_unavailable": "El servicio no está disponible temporalmente.",
+    "too_many_requests": "Demasiados intentos. Espera un momento e inténtalo de nuevo.",
+    "network": "No pudimos conectar con el servidor. Revisa tu conexión.",
+    "contract_mismatch": "El servidor devolvió datos inesperados."
+  },
+  "landing": {
+    "eyebrow": "Análisis probabilístico de fútbol",
+    "title": "Lecturas calibradas, no garantías.",
+    "lead": "BetVision AI convierte los datos del partido en probabilidades calibradas y ventajas honestas. Mide el valor frente al mercado — nunca promete un ganador.",
+    "ctaCreate": "Crear cuenta",
+    "ctaSignIn": "Iniciar sesión",
+    "note": "Probabilístico, no garantizado. Cada número es una estimación calibrada, no una certeza.",
+    "instrument": {
+      "label": "Confianza del modelo",
+      "caption": "Lectura ilustrativa. Cada valor se calibra con resultados históricos."
+    },
+    "props": {
+      "model": {
+        "title": "Modelos, no corazonadas",
+        "body": "Las probabilidades vienen de modelos estadísticos y backtesting. La narrativa las explica — nunca inventa un número."
+      },
+      "risk": {
+        "title": "El riesgo lo eliges tú",
+        "body": "Elige cuánta varianza aceptas. Tu apetito de riesgo decide qué apuestas aparecen — nunca las probabilidades subyacentes."
+      },
+      "sources": {
+        "title": "Fuentes que puedes verificar",
+        "body": "Cada informe cita los datos que lo respaldan y señala su antigüedad, para que audites el razonamiento en lugar de confiar a ciegas."
+      }
+    }
+  },
+  "login": {
+    "eyebrow": "Acceso",
+    "title": "Iniciar sesión",
+    "subtitle": "Continúa a tu panel calibrado.",
+    "email": "Correo",
+    "password": "Contraseña",
+    "submit": "Iniciar sesión",
+    "noAccount": "¿Aún no tienes cuenta?",
+    "createOne": "Crea una",
+    "error": "No pudimos iniciar tu sesión. Revisa tu correo y contraseña."
+  },
+  "register": {
+    "eyebrow": "Empezar",
+    "title": "Crea tu cuenta",
+    "subtitle": "Una visión sobria y calibrada de los mercados de fútbol.",
+    "email": "Correo",
+    "password": "Contraseña",
+    "passwordHint": "Al menos 12 caracteres, con mayúsculas y minúsculas, un número y un símbolo.",
+    "locale": "Idioma",
+    "age": "Tengo 18 años o más.",
+    "terms": "Acepto los Términos y la política de Juego Responsable.",
+    "submit": "Crear cuenta",
+    "haveAccount": "¿Ya tienes cuenta?",
+    "signIn": "Iniciar sesión",
+    "error": "No pudimos crear tu cuenta. Revisa los campos e inténtalo de nuevo."
+  },
+  "validation": {
+    "emailRequired": "Introduce tu correo.",
+    "emailInvalid": "Introduce un correo válido.",
+    "passwordRequired": "Introduce tu contraseña.",
+    "passwordMin": "Usa al menos 12 caracteres.",
+    "passwordComplexity": "Incluye mayúsculas y minúsculas, un número y un símbolo.",
+    "ageRequired": "Debes confirmar que tienes 18 años o más.",
+    "termsRequired": "Debes aceptar los Términos para continuar."
+  },
+  "dashboard": {
+    "eyebrow": "Resumen",
+    "greeting": "Hola de nuevo",
+    "subtitle": "Tu visión calibrada. Los números son sobrios; el riesgo siempre a la vista.",
+    "stats": {
+      "predictionsRun": "Predicciones ejecutadas",
+      "onWatchlist": "En seguimiento",
+      "confidence": "Confianza media",
+      "confidenceCaption": "Se completa cuando ejecutas análisis",
+      "languageLabel": "Idioma"
+    },
+    "sections": {
+      "recentPredictions": "Predicciones recientes",
+      "upcoming": "Próximos partidos",
+      "watchlist": "Seguimiento"
+    },
+    "empty": {
+      "recentPredictions": "Aún no hay predicciones. Cuando analices un partido, aparecerá aquí.",
+      "upcoming": "Todavía no hay partidos que mostrar.",
+      "watchlist": "Tu lista está vacía. Sigue un equipo o partido para verlo aquí."
+    },
+    "soon": "Disponible cuando se publiquen los endpoints de análisis.",
+    "table": {
+      "match": "Partido",
+      "market": "Mercado",
+      "probability": "Probabilidad",
+      "confidence": "Confianza",
+      "risk": "Riesgo",
+      "date": "Fecha"
+    }
+  },
+  "risk": {
+    "label": "Riesgo",
+    "low": "Bajo",
+    "medium": "Medio",
+    "high": "Alto"
+  },
+  "confidence": {
+    "label": "Confianza",
+    "aria": "Confianza del modelo"
+  },
+  "guard": {
+    "checking": "Verificando tu sesión"
+  },
+  "footer": {
+    "rgTitle": "Juega con responsabilidad",
+    "rgBody": "Las predicciones son estimaciones probabilísticas, no un consejo para apostar. Fija límites y toma descansos.",
+    "rgLink": "Juego responsable y límites",
+    "disclaimer": "No es asesoramiento financiero. Sin resultados garantizados.",
+    "age": "+18",
+    "reminder": "Más riesgo significa más varianza — nunca un mayor retorno garantizado."
+  },
+  "userMenu": {
+    "signedInAs": "Sesión iniciada como"
+  }
+}

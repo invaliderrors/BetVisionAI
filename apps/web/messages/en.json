@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "BetVision AI — Calibrated football analysis",
+    "description": "Probabilistic football analysis. Calibrated odds, honest edges, no guarantees."
+  },
+  "common": {
+    "brand": "BetVision AI",
+    "loading": "Loading",
+    "retry": "Retry",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "account": "Account",
+    "language": "Language",
+    "comingSoon": "Coming soon"
+  },
+  "localeName": {
+    "en": "English",
+    "es": "Español"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "matches": "Matches",
+    "history": "History",
+    "settings": "Settings"
+  },
+  "errors": {
+    "internal": "Something went wrong on our side. Please try again.",
+    "bad_request": "That request could not be processed.",
+    "validation": "Please check the highlighted fields.",
+    "unauthorized": "Your session has expired. Please sign in again.",
+    "forbidden": "You do not have access to that.",
+    "not_found": "We could not find what you were looking for.",
+    "service_unavailable": "The service is temporarily unavailable.",
+    "too_many_requests": "Too many attempts. Please wait a moment and try again.",
+    "network": "We could not reach the server. Check your connection.",
+    "contract_mismatch": "The server returned unexpected data."
+  },
+  "landing": {
+    "eyebrow": "Probabilistic football analysis",
+    "title": "Calibrated readings, not guarantees.",
+    "lead": "BetVision AI turns match data into calibrated probabilities and honest edges. It measures value against the market — it never promises a winner.",
+    "ctaCreate": "Create account",
+    "ctaSignIn": "Sign in",
+    "note": "Probabilistic, not guaranteed. Every number is a calibrated estimate, not a certainty.",
+    "instrument": {
+      "label": "Model confidence",
+      "caption": "Illustrative reading. Every value is calibrated on historical outcomes."
+    },
+    "props": {
+      "model": {
+        "title": "Models, not hunches",
+        "body": "Probabilities come from statistical models and backtesting. The narrative explains them — it never invents a number."
+      },
+      "risk": {
+        "title": "Risk you set",
+        "body": "Choose how much variance you will accept. Your risk appetite shapes which bets surface — never the underlying probabilities."
+      },
+      "sources": {
+        "title": "Sources you can check",
+        "body": "Every report cites the data behind it and flags staleness, so you can audit the reasoning instead of trusting it blindly."
+      }
+    }
+  },
+  "login": {
+    "eyebrow": "Access",
+    "title": "Sign in",
+    "subtitle": "Continue to your calibrated dashboard.",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Sign in",
+    "noAccount": "No account yet?",
+    "createOne": "Create one",
+    "error": "We could not sign you in. Check your email and password."
+  },
+  "register": {
+    "eyebrow": "Get started",
+    "title": "Create your account",
+    "subtitle": "A sober, calibrated view of football markets.",
+    "email": "Email",
+    "password": "Password",
+    "passwordHint": "At least 12 characters, with upper- and lower-case letters, a number, and a symbol.",
+    "locale": "Language",
+    "age": "I am 18 or older.",
+    "terms": "I accept the Terms and the Responsible Gambling policy.",
+    "submit": "Create account",
+    "haveAccount": "Already have an account?",
+    "signIn": "Sign in",
+    "error": "We could not create your account. Please review the fields and try again."
+  },
+  "validation": {
+    "emailRequired": "Enter your email.",
+    "emailInvalid": "Enter a valid email address.",
+    "passwordRequired": "Enter your password.",
+    "passwordMin": "Use at least 12 characters.",
+    "passwordComplexity": "Include upper- and lower-case letters, a number, and a symbol.",
+    "ageRequired": "You must confirm you are 18 or older.",
+    "termsRequired": "You must accept the Terms to continue."
+  },
+  "dashboard": {
+    "eyebrow": "Overview",
+    "greeting": "Welcome back",
+    "subtitle": "Your calibrated view. Numbers stay sober; risk is always in view.",
+    "stats": {
+      "predictionsRun": "Predictions run",
+      "onWatchlist": "On watchlist",
+      "confidence": "Avg. confidence",
+      "confidenceCaption": "Populates once you run analyses",
+      "languageLabel": "Language"
+    },
+    "sections": {
+      "recentPredictions": "Recent predictions",
+      "upcoming": "Upcoming fixtures",
+      "watchlist": "Watchlist"
+    },
+    "empty": {
+      "recentPredictions": "No predictions yet. Once you analyse a fixture, it will appear here.",
+      "upcoming": "No fixtures to show yet.",
+      "watchlist": "Your watchlist is empty. Follow a team or fixture to track it here."
+    },
+    "soon": "Available once the analysis endpoints ship.",
+    "table": {
+      "match": "Match",
+      "market": "Market",
+      "probability": "Probability",
+      "confidence": "Confidence",
+      "risk": "Risk",
+      "date": "Date"
+    }
+  },
+  "risk": {
+    "label": "Risk",
+    "low": "Low",
+    "medium": "Medium",
+    "high": "High"
+  },
+  "confidence": {
+    "label": "Confidence",
+    "aria": "Model confidence"
+  },
+  "guard": {
+    "checking": "Checking your session"
+  },
+  "footer": {
+    "rgTitle": "Play responsibly",
+    "rgBody": "Predictions are probabilistic estimates, not advice to bet. Set limits and take breaks.",
+    "rgLink": "Responsible gambling & limits",
+    "disclaimer": "Not financial advice. No guaranteed results.",
+    "age": "18+",
+    "reminder": "Higher risk means higher variance — never a guaranteed higher return."
+  },
+  "userMenu": {
+    "signedInAs": "Signed in as"
+  }
+}
