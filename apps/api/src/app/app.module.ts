@@ -7,6 +7,7 @@ import { I18N } from '@betvision/domain';
 import {
   ConfigModule,
   NestI18nAdapter,
+  PrismaModule,
   RedisModule,
 } from '@betvision/infrastructure';
 import { i18nOptions } from './i18n.options';
@@ -19,6 +20,7 @@ import { ensureCorrelationId } from '../common/correlation/correlation';
   imports: [
     ConfigModule,
     RedisModule,
+    PrismaModule,
     LoggerModule.forRootAsync({
       inject: [APP_CONFIG],
       useFactory: (config: AppConfig) => ({

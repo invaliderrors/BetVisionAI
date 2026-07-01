@@ -3,7 +3,7 @@ import type { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import request from 'supertest';
 import { APP_CONFIG, type AppConfig } from '@betvision/config';
-import { REDIS_CLIENT } from '@betvision/infrastructure';
+import { PrismaService, REDIS_CLIENT } from '@betvision/infrastructure';
 import { AppModule } from '../app/app.module';
 import { correlationIdMiddleware } from '../common/correlation/correlation-id.middleware';
 
@@ -23,12 +23,28 @@ const testConfig: AppConfig = {
   providerKeys: {},
 };
 
-async function bootApp(redis: { ping: () => Promise<string> }): Promise<INestApplication> {
+interface FakeRedis {
+  ping: () => Promise<string>;
+}
+interface FakePrisma {
+  $queryRaw: (...args: unknown[]) => Promise<unknown>;
+}
+
+const healthyPrisma: FakePrisma = {
+  $queryRaw: async () => [{ ok: 1 }],
+};
+
+async function bootApp(
+  redis: FakeRedis,
+  prisma: FakePrisma = healthyPrisma,
+): Promise<INestApplication> {
   const moduleRef = await Test.createTestingModule({ imports: [AppModule] })
     .overrideProvider(APP_CONFIG)
     .useValue(testConfig)
     .overrideProvider(REDIS_CLIENT)
     .useValue(redis)
+    .overrideProvider(PrismaService)
+    .useValue(prisma)
     .compile();
 
   const app = moduleRef.createNestApplication();
@@ -92,6 +108,35 @@ describe('Health (integration)', () => {
       expect(res.body.error.code).toBe('errors.service_unavailable');
       expect(typeof res.body.error.message).toBe('string');
       expect(res.body.error.details.redis.status).toBe('down');
+    });
+  });
+
+  describe('when the database is unreachable', () => {
+    let app: INestApplication;
+
+    beforeAll(async () => {
+      app = await bootApp(
+        { ping: async () => 'PONG' },
+        {
+          $queryRaw: async () => {
+            throw new Error('ECONNREFUSED');
+          },
+        },
+      );
+    });
+
+    afterAll(async () => {
+      await app?.close();
+    });
+
+    it('GET /api/health/ready returns 503 reflecting the real DB probe failing', async () => {
+      const res = await request(app.getHttpServer()).get('/api/health/ready');
+
+      expect(res.status).toBe(503);
+      expect(res.body.data).toBeNull();
+      expect(res.body.error.code).toBe('errors.service_unavailable');
+      expect(res.body.error.details.database.status).toBe('down');
+      expect(res.body.error.details.redis.status).toBe('up');
     });
   });
 });
