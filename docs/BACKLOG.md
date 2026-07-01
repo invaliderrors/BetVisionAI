@@ -50,6 +50,14 @@ Running list of known follow-ups deliberately deferred during the phased build. 
 - **No value-only re-run endpoint.** The RiskSlider re-analyze re-calls full `POST /predictions`; add an endpoint that re-runs only value detection against cached model probabilities (backend already separates scoring from gating) and point the slider at it. *Deferred in Phase 14.*
 - **LLM narrative not yet shown in the report UI.** `PredictionReport` renders numbers + rationale codes; wire `GET /reports/:id` (Phase 12) narrative/sources/staleness into it. *Deferred in Phase 14.*
 
+## LLM Research / Analyze (free-text fixtures)
+
+- **`POST /analyze` is synchronous and slow.** A live research call (Claude + web search) takes ~2–4 min; the endpoint blocks. Move to a BullMQ job with SSE progress (same fix as `/predictions`). *Deferred in the analyze slice.*
+- **Analyses are not persisted.** `AnalyzeFixtureUseCase` runs the pipeline over request-scoped **in-memory** ports, so a research analysis isn't saved (no history). Persisting needs domain-port additions: `TeamRepositoryPort` has no `save`, there is no team-stats/match-stats write port, and `Match.save` requires competition/season FKs. Add write ports + upsert research entities to enable history. *Deferred in the analyze slice.*
+- **Research inputs are AI estimates.** `AnthropicFixtureResearchProvider` (model `claude-opus-4-8`, web-search tool) estimates form/goals/odds from public info — provenance `LLM_RESEARCH`, clearly disclaimed, NOT a licensed feed. Swap for a licensed adapter behind `FIXTURE_RESEARCH_PORT` when a data deal exists. *By design; revisit with real data.*
+- **Report narrator ran in template mode for the live smoke** (one paid call). Set `LLM_MODE=live` to route the report narrative through the live Anthropic explainer too (already wired). *Deferred.*
+- **Frontend free-text analyze not yet wired** — the UI still searches the seeded DB; add an "analyze any fixture" box calling `POST /analyze`. *In progress.*
+
 ## Resolved
 
 - ~~Market taxonomy divergence~~ — resolved in Phase 11 via `OddsMarketMapping` (canonical selection folding + documented group collapse); model markets join odds markets deterministically.
