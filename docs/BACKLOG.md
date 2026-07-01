@@ -5,7 +5,8 @@ Running list of known follow-ups deliberately deferred during the phased build. 
 ## Domain / Data
 
 - **Market taxonomy divergence.** Three taxonomies disagree: domain `MarketKey` union (e.g. `DOUBLE_CHANCE`, `CORRECT_SCORE`), the schema-design catalog keys (`DC`, `CS`, `OU_4_5`), and the persistence `MarketGroup` enum (8 values) vs domain `MarketGroup` (6). Phase 4 made `BettingMarket.key` follow the domain union so FKs resolve. Reconcile with an explicit mapping value object. *Deferred in Phase 4 → resolve in Phase 6/11.*
-- **Elo / Poisson services are interface stubs.** `EloRatingService` and `PoissonGoalModel` are interfaces + TODO only. *Deferred in Phase 3 → implement in Phase 10 (statistical engine).*
+- **OU_4_5 not a persistable market.** The Poisson model can compute `overProbability(4.5)` (used in a monotonicity test) but `MarketKey`/`BettingMarket` stop at `OU_3_5`, so it is not persisted. To offer it, add `OU_4_5` to `MarketKey`, `MARKET_GROUP`, `MARKET_VOLATILITY_BASELINE`, `STATISTICAL_MARKETS`, and the seed catalog. *Noted in Phase 10.*
+- **Calibration uses identity params.** The calibration seam (`PlattCalibrator`/`IsotonicCalibrator`/`CalibrationMap`) exists but Phase 10 ships an `IdentityCalibrator`; real fitted params come from backtesting. *Deferred in Phase 10 → Phase 17.*
 
 ## Infrastructure / DevOps
 
@@ -39,6 +40,7 @@ Running list of known follow-ups deliberately deferred during the phased build. 
 
 ## Resolved
 
+- ~~Elo / Poisson services were interface stubs~~ — implemented in Phase 10 (golden-tested Elo + Poisson/Dixon-Coles, reproducible probabilities).
 - ~~Match aggregate was minimal / name-resolution stopgap~~ — fleshed out with real FK ids in Phase 6 (round-trip test proves persisted `homeTeamId`/`seasonId` match input).
 - ~~API readiness DB check stub~~ — wired to a real Prisma `SELECT 1` in Phase 4.
 - ~~Worker reused API HTTP bootstrap~~ — converted to standalone context in Phase 2.
