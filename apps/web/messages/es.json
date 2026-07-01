@@ -19,6 +19,7 @@
   },
   "nav": {
     "dashboard": "Panel",
+    "analyze": "Analizar",
     "matches": "Partidos",
     "history": "Historial",
     "settings": "Ajustes"
@@ -252,6 +253,69 @@
       "referee": "Árbitro",
       "unknownVenue": "Sede por confirmar",
       "unknownReferee": "Árbitro por confirmar"
+    }
+  },
+  "analyze": {
+    "hero": {
+      "eyebrow": "Analiza cualquier partido",
+      "title": "Escribe un partido y obtén una lectura calibrada",
+      "subtitle": "Escribe cualquier partido en texto libre. Lo investigamos en vivo, estimamos los datos y ejecutamos el mismo modelo sobrio — con fuentes citadas.",
+      "placeholder": "ej. Portugal vs España",
+      "cta": "Analizar",
+      "aiNote": "Los datos son estimados por IA a partir de investigación en vivo, no de una fuente con licencia."
+    },
+    "page": {
+      "eyebrow": "Investigación en vivo",
+      "title": "Analiza cualquier partido",
+      "subtitle": "Escribe un partido, ajusta tu apetito de riesgo y obtén una recomendación calibrada con informe y fuentes citadas."
+    },
+    "form": {
+      "queryLabel": "Partido",
+      "placeholder": "ej. Portugal vs España",
+      "hint": "Cualquier par de equipos — resolvemos el partido y lo investigamos en vivo.",
+      "languageLabel": "Idioma del informe",
+      "submit": "Analizar",
+      "reanalyze": "Reanalizar",
+      "errors": {
+        "queryRequired": "Escribe un partido para analizar, ej. «Portugal vs España»."
+      }
+    },
+    "progress": {
+      "eyebrow": "Investigando",
+      "title": "Investigando el partido",
+      "barLabel": "Análisis en curso",
+      "cancel": "Cancelar",
+      "note": "La investigación en vivo hace una búsqueda web y ejecuta el modelo, así que puede tardar un par de minutos. Mantén esta pestaña abierta — puedes cancelar cuando quieras.",
+      "steps": {
+        "resolve": "Resolviendo los equipos…",
+        "research": "Reuniendo forma reciente y fuentes…",
+        "model": "Ejecutando el modelo…",
+        "value": "Evaluando el valor en tu nivel de riesgo…"
+      }
+    },
+    "error": {
+      "title": "Ese análisis no se completó."
+    },
+    "result": {
+      "queryLabel": "Preguntaste",
+      "fixtureEyebrow": "Partido resuelto",
+      "competition": "Competición",
+      "kickoff": "Inicio",
+      "unknownCompetition": "Competición por confirmar",
+      "unknownKickoff": "Inicio por confirmar",
+      "reportEyebrow": "Análisis con IA",
+      "summaryLabel": "Resumen",
+      "reasoningLabel": "Razonamiento",
+      "keyDataPointsLabel": "Datos clave",
+      "risksLabel": "Riesgos y salvedades",
+      "sourcesEyebrow": "Fuentes",
+      "sourcesNote": "La investigación en la que se basaron estas estimaciones. Abre cada una para auditarla — nada de esto es una fuente de datos con licencia.",
+      "sourcesEmpty": "No se devolvieron fuentes para este análisis.",
+      "openSource": "Abrir fuente en una pestaña nueva",
+      "disclaimerEyebrow": "Datos estimados por IA",
+      "provenanceLabel": "Origen",
+      "provenanceValue": "Investigación LLM en vivo",
+      "rgWarningLabel": "Juega con responsabilidad"
     }
   },
   "risk": {

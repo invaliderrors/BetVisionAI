@@ -19,6 +19,7 @@
   },
   "nav": {
     "dashboard": "Dashboard",
+    "analyze": "Analyze",
     "matches": "Matches",
     "history": "History",
     "settings": "Settings"
@@ -252,6 +253,69 @@
       "referee": "Referee",
       "unknownVenue": "Venue TBC",
       "unknownReferee": "Referee TBC"
+    }
+  },
+  "analyze": {
+    "hero": {
+      "eyebrow": "Analyze any fixture",
+      "title": "Type a match, get a calibrated read",
+      "subtitle": "Free-text any fixture. We research it live, estimate the inputs, and run the same sober model — with cited sources.",
+      "placeholder": "e.g. Portugal vs Spain",
+      "cta": "Analyze",
+      "aiNote": "Inputs are AI-estimated from live research, not a licensed data feed."
+    },
+    "page": {
+      "eyebrow": "Live research",
+      "title": "Analyze any fixture",
+      "subtitle": "Type a match, set your risk appetite, and get a calibrated recommendation with a report and cited sources."
+    },
+    "form": {
+      "queryLabel": "Fixture",
+      "placeholder": "e.g. Portugal vs Spain",
+      "hint": "Any two teams — we resolve the fixture and research it live.",
+      "languageLabel": "Report language",
+      "submit": "Analyze",
+      "reanalyze": "Re-analyze",
+      "errors": {
+        "queryRequired": "Enter a fixture to analyze, e.g. “Portugal vs Spain”."
+      }
+    },
+    "progress": {
+      "eyebrow": "Researching",
+      "title": "Researching the fixture",
+      "barLabel": "Analysis in progress",
+      "cancel": "Cancel",
+      "note": "Live research runs a web search and the model, so this can take a couple of minutes. Keep this tab open — you can cancel any time.",
+      "steps": {
+        "resolve": "Resolving the teams…",
+        "research": "Gathering recent form & sources…",
+        "model": "Running the model…",
+        "value": "Evaluating value at your risk level…"
+      }
+    },
+    "error": {
+      "title": "That analysis didn’t finish."
+    },
+    "result": {
+      "queryLabel": "You asked",
+      "fixtureEyebrow": "Resolved fixture",
+      "competition": "Competition",
+      "kickoff": "Kick-off",
+      "unknownCompetition": "Competition TBC",
+      "unknownKickoff": "Kick-off TBC",
+      "reportEyebrow": "AI analysis",
+      "summaryLabel": "Summary",
+      "reasoningLabel": "Reasoning",
+      "keyDataPointsLabel": "Key data points",
+      "risksLabel": "Risks & caveats",
+      "sourcesEyebrow": "Sources",
+      "sourcesNote": "The research these estimates were grounded in. Open each one to audit it — none of this is a licensed data feed.",
+      "sourcesEmpty": "No sources were returned for this analysis.",
+      "openSource": "Open source in a new tab",
+      "disclaimerEyebrow": "AI-estimated inputs",
+      "provenanceLabel": "Source",
+      "provenanceValue": "Live LLM research",
+      "rgWarningLabel": "Play responsibly"
     }
   },
   "risk": {

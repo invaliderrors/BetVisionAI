@@ -22,6 +22,7 @@ export function DashboardHeader() {
 
   const navItems = [
     { href: '/dashboard', label: tNav('dashboard') },
+    { href: '/analyze', label: tNav('analyze') },
     { href: '/matches', label: tNav('matches') },
   ] as const;
 

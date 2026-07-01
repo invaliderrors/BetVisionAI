@@ -22,6 +22,7 @@ import type {
 } from '../lib/api/endpoints';
 import { useAuthStore } from '../lib/auth/auth-store';
 import { formatDateTime, formatPercent } from '../lib/format';
+import { AnalyzeHero } from './analyze-hero';
 
 function EmptyState({ message, soon }: { message: string; soon?: string }) {
   return (
@@ -104,6 +105,9 @@ export function DashboardView() {
         </h1>
         <p className="mt-1 max-w-2xl text-sm text-muted">{t('subtitle')}</p>
       </header>
+
+      {/* Prominent free-text "analyze any fixture" entry — the primary action on the dashboard. */}
+      <AnalyzeHero />
 
       <section
         aria-label={t('eyebrow')}

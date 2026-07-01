@@ -1,8 +1,12 @@
-const { join } = require('path');
+const path = require('path');
+const { join, relative, sep } = path;
 const createNextIntlPlugin = require('next-intl/plugin');
 
-// Points next-intl at the per-request i18n config (locale + message catalog).
-const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
+// Relative-from-cwd path so next-intl resolves the config whether cwd is the workspace root
+// (Nx graph inference / `nx build`) or apps/web (direct `next build`). Absolute paths are rejected.
+const requestConfig =
+  './' + relative(process.cwd(), join(__dirname, 'src', 'i18n', 'request.ts')).split(sep).join('/');
+const withNextIntl = createNextIntlPlugin(requestConfig);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

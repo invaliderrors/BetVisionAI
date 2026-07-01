@@ -16,7 +16,6 @@ import {
   type TableColumn,
 } from '@betvision/ui';
 import type {
-  MatchDetailDto,
   PredictionResponseDto,
   PredictionResultDto,
   RecommendationDto,
@@ -25,8 +24,18 @@ import { formatNumber } from '../lib/format';
 
 const DASH = '—';
 
+/**
+ * Minimal fixture shape the report needs to render its header. A full `MatchDetailDto` (the
+ * /matches flow) and the analyze flow's `resolvedFixture` both satisfy this structurally, so the
+ * same report renders for a searched fixture and a free-text "analyze any fixture" result.
+ */
+export interface ReportFixture {
+  home: { name: string };
+  away: { name: string };
+}
+
 export interface PredictionReportProps {
-  match: MatchDetailDto;
+  match: ReportFixture;
   result: PredictionResponseDto;
 }
 
