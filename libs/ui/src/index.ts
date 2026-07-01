@@ -10,4 +10,8 @@ export * from './lib/skeleton';
 export * from './lib/table';
 export * from './lib/risk-badge';
 export * from './lib/confidence-bar';
+export * from './lib/risk-bucket';
+export * from './lib/risk-slider';
+export * from './lib/risk-meter';
+export * from './lib/recommendation-card';
 export * from './lib/language-switcher';
