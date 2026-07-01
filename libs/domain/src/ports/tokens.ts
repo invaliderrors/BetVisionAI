@@ -18,6 +18,7 @@ export const LLM_EXPLANATION = Symbol('LlmExplanationPort');
 export const RAG_RETRIEVER = Symbol('RagRetrieverPort');
 export const CACHE = Symbol('CachePort');
 export const FEATURE_STORE = Symbol('FeatureStorePort');
+export const PREDICTION_INPUT_REPOSITORY = Symbol('PredictionInputRepositoryPort');
 export const PREDICTION_MODEL = Symbol('PredictionModelPort');
 export const AUDIT_LOG = Symbol('AuditLogPort');
 export const NOTIFICATION = Symbol('NotificationPort');

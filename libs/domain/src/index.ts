@@ -12,6 +12,8 @@ export * from './users/entities/user.entity';
 // users (types + rbac)
 export * from './users/types';
 export * from './users/role-permissions';
+// features (Phase 9 — feature engineering core)
+export * from './features/feature-set';
 // value objects
 export * from './value-objects/email';
 export * from './value-objects/password-hash';
@@ -51,6 +53,7 @@ export * from './ports/injury-provider.port';
 export * from './ports/lineup-provider.port';
 export * from './ports/odds-provider.port';
 export * from './ports/feature-store.port';
+export * from './ports/prediction-input-repository.port';
 export * from './ports/prediction-model.port';
 export * from './ports/llm-explanation.port';
 export * from './ports/rag-retriever.port';
