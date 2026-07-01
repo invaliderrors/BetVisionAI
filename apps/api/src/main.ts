@@ -1,7 +1,8 @@
-import { Logger as NestLogger } from '@nestjs/common';
+import { Logger as NestLogger, VersioningType } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import helmet from 'helmet';
+import cookieParser from 'cookie-parser';
 import { Logger } from 'nestjs-pino';
 import { APP_CONFIG, type AppConfig } from '@betvision/config';
 import { AppModule } from './app/app.module';
@@ -14,8 +15,12 @@ async function bootstrap(): Promise<void> {
   app.useLogger(app.get(Logger));
 
   app.use(helmet());
+  app.use(cookieParser());
   app.use(correlationIdMiddleware);
   app.setGlobalPrefix('api');
+  // URI versioning: versioned controllers serve under /api/v1/... while unversioned ones
+  // (e.g. health) stay at /api/... . No default version keeps health at /api/health.
+  app.enableVersioning({ type: VersioningType.URI });
   app.enableShutdownHooks();
 
   const config = app.get<AppConfig>(APP_CONFIG);

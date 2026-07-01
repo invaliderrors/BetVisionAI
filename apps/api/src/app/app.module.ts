@@ -1,10 +1,12 @@
 import { Module, ValidationPipe } from '@nestjs/common';
-import { APP_FILTER, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
+import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
 import { LoggerModule } from 'nestjs-pino';
 import { I18nModule, I18nService } from 'nestjs-i18n';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { APP_CONFIG, type AppConfig } from '@betvision/config';
 import { I18N } from '@betvision/domain';
 import {
+  AuthInfraModule,
   ConfigModule,
   NestI18nAdapter,
   PrismaModule,
@@ -12,6 +14,8 @@ import {
 } from '@betvision/infrastructure';
 import { i18nOptions } from './i18n.options';
 import { HealthModule } from '../health/health.module';
+import { AuthModule } from '../auth/auth.module';
+import { UsersModule } from '../users/users.module';
 import { AllExceptionsFilter } from '../common/exceptions/all-exceptions.filter';
 import { ResponseEnvelopeInterceptor } from '../common/http/response-envelope.interceptor';
 import { ensureCorrelationId } from '../common/correlation/correlation';
@@ -47,7 +51,13 @@ import { ensureCorrelationId } from '../common/correlation/correlation';
       }),
     }),
     I18nModule.forRoot(i18nOptions()),
+    // Light rate limiting (full hardening is Phase 18). Lenient app-wide default; the auth
+    // controller tightens it via @Throttle. Enforced by the global ThrottlerGuard below.
+    ThrottlerModule.forRoot([{ ttl: 60000, limit: 300 }]),
+    AuthInfraModule,
     HealthModule,
+    AuthModule,
+    UsersModule,
   ],
   providers: [
     {
@@ -61,6 +71,7 @@ import { ensureCorrelationId } from '../common/correlation/correlation';
     },
     { provide: APP_FILTER, useClass: AllExceptionsFilter },
     { provide: APP_INTERCEPTOR, useClass: ResponseEnvelopeInterceptor },
+    { provide: APP_GUARD, useClass: ThrottlerGuard },
     // Bind the domain I18nPort to the nestjs-i18n backed adapter.
     {
       provide: I18N,
