@@ -4,6 +4,8 @@ export * from './fakes/fake-clock.port';
 export * from './fakes/fake-id-generator.port';
 export * from './fakes/fake-prediction-model.port';
 export * from './fakes/fake-match-repository';
+export * from './fakes/fake-team-repository';
+export * from './fakes/fake-competition-repository';
 export * from './fakes/fake-odds-repository';
 export * from './fakes/fake-sports-data-provider';
 export * from './fakes/fake-team-stats-provider';

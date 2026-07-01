@@ -25,8 +25,11 @@ describe('object mothers build valid defaults with overrides', () => {
     expect(aModelScoreResult({ modelVersion: 'v2' }).modelVersion).toBe('v2');
   });
 
-  it('aMatch builds a valid Match aggregate with a canonical label', () => {
-    expect(aMatch().label).toBe('Real Madrid vs Barcelona');
-    expect(aMatch({ homeName: 'Sevilla' }).label).toBe('Sevilla vs Barcelona');
+  it('aMatch builds a valid fleshed-out Match aggregate carrying real ids', () => {
+    expect(aMatch().homeTeamId).toBe('team-rma');
+    expect(aMatch().awayTeamId).toBe('team-fcb');
+    expect(aMatch().seasonId).toBe('season-2526');
+    expect(aMatch().status).toBe('scheduled');
+    expect(aMatch({ status: 'finished' }).status).toBe('finished');
   });
 });
