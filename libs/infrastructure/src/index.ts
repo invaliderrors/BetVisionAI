@@ -33,6 +33,12 @@ export * from './features/redis-feature-store';
 export * from './features/prisma-prediction-input.repository';
 export * from './features/features.module';
 
+// Phase-10: statistical prediction model adapter (bound to PREDICTION_MODEL) + wiring module.
+// The model adapter is the swap seam for a future Python model-service; the Prisma
+// Prediction/PredictionResult repositories + mappers stay internal (bound only via the module).
+export * from './prediction/statistical-prediction-model';
+export * from './prediction/predictions.module';
+
 // Auth / security adapters (Phase 5). The @Global AuthInfraModule binds them to their
 // domain port tokens; the classes are exported for explicit composition/tests. The Prisma
 // user repository + audit adapter stay internal (bound only via AuthInfraModule).
