@@ -23,6 +23,9 @@
     "market_not_supported": "El mercado solicitado no es compatible.",
     "not_found": "Predicción no encontrada."
   },
+  "report": {
+    "not_found": "Informe no encontrado."
+  },
   "match": {
     "teams_identical": "Un partido no puede tener el mismo equipo en ambos lados.",
     "fixture_query_empty": "Introduce un partido para buscar, p. ej. \"Real Madrid vs Barcelona\".",
