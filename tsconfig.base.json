@@ -1,0 +1,28 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "paths": {
+      "@betvision/domain": ["./libs/domain/src/index.ts"],
+      "@betvision/application": ["./libs/application/src/index.ts"],
+      "@betvision/infrastructure": ["./libs/infrastructure/src/index.ts"],
+      "@betvision/contracts": ["./libs/contracts/src/index.ts"],
+      "@betvision/shared": ["./libs/shared/src/index.ts"],
+      "@betvision/ui": ["./libs/ui/src/index.ts"],
+      "@betvision/config": ["./libs/config/src/index.ts"],
+      "@betvision/testing": ["./libs/testing/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
