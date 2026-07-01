@@ -22,6 +22,24 @@ export const DomainErrorCode = {
   // domain gating / pipeline
   NO_VALUE_FOUND: 'domain.value.no_value_found',
   MARKET_NOT_SUPPORTED: 'domain.prediction.market_not_supported',
+  // auth / account (Phase 5) — value-object + policy validation
+  EMAIL_INVALID: 'domain.auth.email_invalid',
+  PASSWORD_TOO_SHORT: 'domain.auth.password_too_short',
+  PASSWORD_TOO_WEAK: 'domain.auth.password_too_weak',
+  PASSWORD_HASH_INVALID: 'domain.auth.password_hash_invalid',
+  AGE_NOT_CONFIRMED: 'domain.auth.age_not_confirmed',
+  TERMS_NOT_ACCEPTED: 'domain.auth.terms_not_accepted',
+  // auth / account (Phase 5) — use-case outcomes. Kept GENERIC on purpose so the
+  // API never leaks which of email/password was wrong (SPEC §19 threat model).
+  REGISTRATION_FAILED: 'domain.auth.registration_failed',
+  INVALID_CREDENTIALS: 'domain.auth.invalid_credentials',
+  ACCOUNT_NOT_ACTIVE: 'domain.auth.account_not_active',
+  INVALID_REFRESH_TOKEN: 'domain.auth.invalid_refresh_token',
+  INVALID_RESET_TOKEN: 'domain.auth.invalid_reset_token',
+  FORBIDDEN: 'domain.auth.forbidden',
+  // users (Phase 5)
+  USER_NOT_FOUND: 'domain.user.not_found',
+  SELF_LIMIT_EMPTY: 'domain.user.self_limit_empty',
 } as const;
 
 export type DomainErrorCode = (typeof DomainErrorCode)[keyof typeof DomainErrorCode];
