@@ -1,21 +1,23 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
+// apps/worker/src/main.ts
+// Standalone Nest application context — NO HTTP server, NO app.listen / port binding.
+// Boots the DI graph (Config + Redis + BullMQ), which logs "worker ready" on init.
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app/app.module';
+import { WorkerModule } from './app/worker.module';
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  const globalPrefix = 'api';
-  app.setGlobalPrefix(globalPrefix);
-  const port = process.env.PORT || 3000;
-  await app.listen(port);
+async function bootstrap(): Promise<void> {
+  const context = await NestFactory.createApplicationContext(WorkerModule);
+  context.enableShutdownHooks();
   Logger.log(
-    `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`,
+    'Worker started as a standalone context (no HTTP server).',
+    'Worker',
   );
 }
 
-bootstrap();
+bootstrap().catch((error: unknown) => {
+  new Logger('Worker').error(
+    error instanceof Error ? error.message : String(error),
+    error instanceof Error ? error.stack : undefined,
+  );
+  process.exit(1);
+});
