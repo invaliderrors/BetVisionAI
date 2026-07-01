@@ -39,3 +39,6 @@ export * from './predictions/get-prediction.use-case';
 export * from './reports/template-narrative';
 export * from './reports/generate-report.use-case';
 export * from './reports/get-report.use-case';
+// analyze any free-text fixture (LLM_RESEARCH slice — research + estimate + pipeline + report)
+export * from './analyze/analyze-fixture.use-case';
+export * from './analyze/analyze-fixture.stores';
