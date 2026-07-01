@@ -20,6 +20,8 @@ export const CACHE = Symbol('CachePort');
 export const FEATURE_STORE = Symbol('FeatureStorePort');
 export const PREDICTION_INPUT_REPOSITORY = Symbol('PredictionInputRepositoryPort');
 export const PREDICTION_MODEL = Symbol('PredictionModelPort');
+export const PREDICTION_REPOSITORY = Symbol('PredictionRepositoryPort');
+export const PREDICTION_RESULT_REPOSITORY = Symbol('PredictionResultRepositoryPort');
 export const AUDIT_LOG = Symbol('AuditLogPort');
 export const NOTIFICATION = Symbol('NotificationPort');
 // Auth / accounts (Phase 5)
