@@ -32,3 +32,6 @@ export * from './competitions/get-competition-seasons.use-case';
 export * from './features/compute-features.use-case';
 // predictions (Phase 10 — statistical prediction engine)
 export * from './predictions/run-prediction.use-case';
+// value betting (Phase 11 — odds + risk appetite)
+export * from './predictions/detect-value-bets.use-case';
+export * from './predictions/get-prediction.use-case';
