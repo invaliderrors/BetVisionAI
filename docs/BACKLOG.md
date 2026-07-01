@@ -37,6 +37,19 @@ Running list of known follow-ups deliberately deferred during the phased build. 
 - **Frontend stubs to wire.** Dashboard predictions/watchlist and match search are typed local stubs (`TODO(backend …)`) until `GET /predictions?mine`, `/watchlist`, `/matches/search` are consumed. *Deferred in Phase 13 → Phase 14/15.*
 - **RiskSlider not yet built.** The risk-appetite slider UI is deferred to Phase 14 (Match Analysis page). *Deferred in Phase 13 → Phase 14.*
 
+## AI / Reports (from Phase 12)
+
+- **RAG is a dev stub.** `DevRagRetriever` returns curated labelled dev snippets; replace with a pgvector-backed retriever over a licensed, embedded corpus. *Deferred in Phase 12.*
+- **Live LLM not exercised here.** `AnthropicLlmAdapter` (model `claude-opus-4-8`) is wired behind `LLM_MODE=live` + `ANTHROPIC_API_KEY`, but only the deterministic `TemplateLlmAdapter` runs/tests in this environment (no key). Provide a key + set `LLM_MODE=live` to exercise it; optionally add structured-output/thinking config. *Deferred in Phase 12.*
+- **Report language switch regenerates prose.** Numbers are already reused; a future optimization short-circuits to `findLatest(predictionId, language)` when an immutable report already exists. *Deferred in Phase 12.*
+- **api e2e runs serially** (`apps/api/jest.config.cts maxWorkers:1`) because `predictions.e2e` + `reports.e2e` share the `dev-match-demo-1` fixture with destructive cleanup. Isolate fixtures per suite to re-enable parallel workers. *Deferred in Phase 12.*
+
+## Frontend analysis (from Phase 14)
+
+- **`POST /predictions` is synchronous.** UI shows a step chip row + skeleton; move Run+Detect to a BullMQ job with SSE progress and switch the stepper to live updates. *Deferred in Phase 14.*
+- **No value-only re-run endpoint.** The RiskSlider re-analyze re-calls full `POST /predictions`; add an endpoint that re-runs only value detection against cached model probabilities (backend already separates scoring from gating) and point the slider at it. *Deferred in Phase 14.*
+- **LLM narrative not yet shown in the report UI.** `PredictionReport` renders numbers + rationale codes; wire `GET /reports/:id` (Phase 12) narrative/sources/staleness into it. *Deferred in Phase 14.*
+
 ## Resolved
 
 - ~~Market taxonomy divergence~~ — resolved in Phase 11 via `OddsMarketMapping` (canonical selection folding + documented group collapse); model markets join odds markets deterministically.
