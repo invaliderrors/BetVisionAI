@@ -13,10 +13,15 @@
     "not_finite_number": "El valor de {field} debe ser un número finito."
   },
   "value": {
-    "no_value_found": "No se encontró ninguna apuesta de valor para el nivel de riesgo seleccionado."
+    "no_value_found": "No se encontró ninguna apuesta de valor para el nivel de riesgo seleccionado. Un nivel de riesgo más alto podría mostrar más selecciones, pero más riesgo significa más varianza, no mayor valor esperado.",
+    "rationale": {
+      "positive_edge_best_bet": "Mejor valor: la probabilidad del modelo supera a la implícita del mercado con el mayor margen ajustado por riesgo.",
+      "positive_edge_alternative": "Valor alternativo: un margen positivo sobre el mercado que también cumple tu perfil de riesgo."
+    }
   },
   "prediction": {
-    "market_not_supported": "El mercado solicitado no es compatible."
+    "market_not_supported": "El mercado solicitado no es compatible.",
+    "not_found": "Predicción no encontrada."
   },
   "match": {
     "teams_identical": "Un partido no puede tener el mismo equipo en ambos lados.",

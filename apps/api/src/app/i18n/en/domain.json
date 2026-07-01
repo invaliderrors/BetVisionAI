@@ -13,10 +13,15 @@
     "not_finite_number": "The value for {field} must be a finite number."
   },
   "value": {
-    "no_value_found": "No value bet was found for the selected risk level."
+    "no_value_found": "No value bet was found for the selected risk level. A higher risk setting may surface more selections — but higher risk means higher variance, not higher expected value.",
+    "rationale": {
+      "positive_edge_best_bet": "Best value: the model's probability exceeds the market's implied probability by the largest risk-adjusted margin.",
+      "positive_edge_alternative": "Alternative value: a positive edge over the market that also clears your risk profile."
+    }
   },
   "prediction": {
-    "market_not_supported": "The requested market is not supported."
+    "market_not_supported": "The requested market is not supported.",
+    "not_found": "Prediction not found."
   },
   "match": {
     "teams_identical": "A match cannot have the same team on both sides.",
