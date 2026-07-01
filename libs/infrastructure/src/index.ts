@@ -47,6 +47,12 @@ export * from './ai-analysis/anthropic-llm.adapter';
 export * from './ai-analysis/dev-rag-retriever';
 export * from './reports/reports.module';
 
+// LLM_RESEARCH slice: free-text fixture research adapters (Anthropic web-search + dev synthetic)
+// bound to FIXTURE_RESEARCH_PROVIDER, plus the AnalyzeFixtureUseCase composition module.
+export * from './ai-analysis/anthropic-fixture-research.provider';
+export * from './ai-analysis/dev-fixture-research.provider';
+export * from './analyze/analyze.module';
+
 // Auth / security adapters (Phase 5). The @Global AuthInfraModule binds them to their
 // domain port tokens; the classes are exported for explicit composition/tests. The Prisma
 // user repository + audit adapter stay internal (bound only via AuthInfraModule).
