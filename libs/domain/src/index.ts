@@ -32,6 +32,9 @@ export * from './value-objects/risk-appetite';
 // recommendations (Phase 11 — value betting aggregate)
 export * from './recommendations/value-ranking';
 export * from './recommendations/recommendation.entity';
+// AI-generated reports (Phase 12)
+export * from './reports/analysis-report';
+export * from './ai/narrative-guardrail';
 // services
 export * from './services/prob-math';
 export * from './services/elo-rating.service';
@@ -68,6 +71,7 @@ export * from './ports/prediction-model.port';
 export * from './ports/prediction-repository.port';
 export * from './ports/prediction-result-repository.port';
 export * from './ports/recommendation-repository.port';
+export * from './ports/analysis-report-repository.port';
 export * from './ports/llm-explanation.port';
 export * from './ports/rag-retriever.port';
 export * from './ports/cache.port';

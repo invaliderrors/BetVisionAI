@@ -23,6 +23,7 @@ export const PREDICTION_MODEL = Symbol('PredictionModelPort');
 export const PREDICTION_REPOSITORY = Symbol('PredictionRepositoryPort');
 export const PREDICTION_RESULT_REPOSITORY = Symbol('PredictionResultRepositoryPort');
 export const RECOMMENDATION_REPOSITORY = Symbol('RecommendationRepositoryPort');
+export const ANALYSIS_REPORT_REPOSITORY = Symbol('AnalysisReportRepositoryPort');
 export const AUDIT_LOG = Symbol('AuditLogPort');
 export const NOTIFICATION = Symbol('NotificationPort');
 // Auth / accounts (Phase 5)

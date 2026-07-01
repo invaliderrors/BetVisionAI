@@ -15,6 +15,12 @@ export interface ComputedSelectionFact {
   readonly suggestedStakePct: number; // display only
   readonly confidence: string;
   readonly risk: string;
+  /**
+   * i18n-keyed RecommendationRationale code (Phase 12, optional/additive). Passed as READ-ONLY
+   * context so the narrator can phrase WHY a selection was surfaced — it is a CODE, never a
+   * probability/edge/EV/stake, so the strings-only return-type guarantee is preserved.
+   */
+  readonly rationaleCode?: string;
 }
 
 export interface SourceRef {
