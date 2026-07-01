@@ -1,0 +1,39 @@
+# Keep the build context small and never leak local state/secrets into images.
+
+# Dependencies (reinstalled inside the image)
+node_modules
+**/node_modules
+
+# Build output / caches
+dist
+tmp
+out-tsc
+coverage
+.nx
+**/.next
+**/.swc
+
+# VCS & CI
+.git
+.gitignore
+.github
+
+# Editor / OS
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+*.log
+
+# Local secrets — the example is allowed, real .env is not
+.env
+.env.*
+!.env.example
+
+# Docs & docker meta (not needed to build the apps)
+docs
+README.md
+CLAUDE.md
+docker-compose*.yml
+.dockerignore
+docker/*.Dockerfile

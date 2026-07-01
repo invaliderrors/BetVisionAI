@@ -1,0 +1,133 @@
+# =============================================================================
+# BetVision AI — LOCAL DEVELOPMENT stack (Phase 19).
+#
+#   1. cp .env.example .env   # then fill in local values
+#   2. docker compose up --build
+#
+# Services boot in dependency order gated by healthchecks (api/worker wait for
+# postgres AND redis to be healthy; web waits for api). No secrets are hardcoded
+# here — everything comes from `.env` / .env.example.
+# =============================================================================
+
+name: betvision
+
+services:
+  # --- PostgreSQL ------------------------------------------------------------
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # --- Redis -----------------------------------------------------------------
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--save", "60", "1", "--loglevel", "warning"]
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redisdata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+
+  # --- API (NestJS) ----------------------------------------------------------
+  api:
+    build:
+      context: .
+      dockerfile: docker/node.Dockerfile
+      args:
+        PROJECT: api
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      # Container networking: reach infra by service name (overrides .env).
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?schema=public
+      REDIS_URL: redis://redis:6379
+    ports:
+      - "${API_PORT:-3000}:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      # Hits the default Nest route (global prefix `api`). Swap to /api/health
+      # once the Phase 2 health endpoint lands.
+      test: ["CMD-SHELL", "wget -qO- http://localhost:3000/api >/dev/null 2>&1 || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  # --- Worker (NestJS / BullMQ) ---------------------------------------------
+  worker:
+    build:
+      context: .
+      dockerfile: docker/node.Dockerfile
+      args:
+        PROJECT: worker
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?schema=public
+      REDIS_URL: redis://redis:6379
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  # --- Web (Next.js) ---------------------------------------------------------
+  web:
+    build:
+      context: .
+      dockerfile: docker/web.Dockerfile
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      # Server-side calls use the internal service name; browser uses NEXT_PUBLIC_*.
+      API_URL: http://api:3000
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:3000}
+    ports:
+      - "${WEB_PORT:-3001}:3000"
+    depends_on:
+      api:
+        condition: service_healthy
+
+  # --- Adminer (DB inspection UI) -------------------------------------------
+  adminer:
+    image: adminer:4
+    restart: unless-stopped
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+    ports:
+      - "${ADMINER_PORT:-8080}:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  pgdata:
+  redisdata:
