@@ -39,6 +39,14 @@ export * from './features/features.module';
 export * from './prediction/statistical-prediction-model';
 export * from './prediction/predictions.module';
 
+// Phase-12: AI-analysis adapters (LlmExplanationPort dev/live + RagRetrieverPort dev stub) + the
+// reports composition module. The Prisma AnalysisReport repository + mapper stay internal (bound
+// only via ReportsModule).
+export * from './ai-analysis/template-llm.adapter';
+export * from './ai-analysis/anthropic-llm.adapter';
+export * from './ai-analysis/dev-rag-retriever';
+export * from './reports/reports.module';
+
 // Auth / security adapters (Phase 5). The @Global AuthInfraModule binds them to their
 // domain port tokens; the classes are exported for explicit composition/tests. The Prisma
 // user repository + audit adapter stay internal (bound only via AuthInfraModule).
