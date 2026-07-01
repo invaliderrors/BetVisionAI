@@ -20,7 +20,10 @@ export function DashboardHeader() {
   const user = useAuthStore((s) => s.user);
   const logout = useAuthStore((s) => s.logout);
 
-  const navItems = [{ href: '/dashboard', label: tNav('dashboard') }] as const;
+  const navItems = [
+    { href: '/dashboard', label: tNav('dashboard') },
+    { href: '/matches', label: tNav('matches') },
+  ] as const;
 
   async function handleSignOut() {
     await logout(locale);
@@ -36,7 +39,8 @@ export function DashboardHeader() {
 
         <nav aria-label={tNav('dashboard')} className="hidden items-center gap-1 sm:flex">
           {navItems.map((item) => {
-            const active = pathname === item.href;
+            const active =
+              pathname === item.href || pathname.startsWith(`${item.href}/`);
             return (
               <Link
                 key={item.href}

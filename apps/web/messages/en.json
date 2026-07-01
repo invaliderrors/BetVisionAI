@@ -127,6 +127,133 @@
       "date": "Date"
     }
   },
+  "analysis": {
+    "search": {
+      "eyebrow": "Find a fixture",
+      "title": "Analyze a match",
+      "subtitle": "Search a fixture, set your risk appetite, and run a calibrated analysis.",
+      "label": "Search fixtures",
+      "placeholder": "e.g. Real Madrid vs Barcelona",
+      "hint": "Type at least two characters to search.",
+      "searching": "Searching fixtures",
+      "resultsLabel": "Ranked candidates",
+      "confidence": "Match",
+      "confidenceAria": "Fixture match confidence",
+      "analyze": "Analyze",
+      "vs": "vs",
+      "noMatch": {
+        "title": "No fixture matched that search.",
+        "body": "Check the spelling, or try one of the closest team names below.",
+        "suggestionsLabel": "Closest teams"
+      }
+    },
+    "slider": {
+      "eyebrow": "Risk appetite",
+      "label": "Risk appetite",
+      "aria": "Risk appetite, 0 to 100",
+      "valueText": "{value} of {max}, {bucket}",
+      "buckets": {
+        "conservative": {
+          "label": "Conservative",
+          "description": "Demands a larger edge and higher confidence, and drops high-variance markets."
+        },
+        "balanced": {
+          "label": "Balanced",
+          "description": "A measured middle ground between edge, confidence and market variance."
+        },
+        "aggressive": {
+          "label": "Aggressive",
+          "description": "Accepts thinner edges and higher-variance markets to surface more selections."
+        }
+      }
+    },
+    "report": {
+      "fixtureEyebrow": "Fixture",
+      "loadingFixture": "Loading fixture",
+      "analyzeCta": "Analyze",
+      "reanalyzeCta": "Re-analyze",
+      "analyzing": "Running analysis",
+      "stepsNote": "Analysis runs synchronously for now. Live job progress arrives with the async pipeline.",
+      "steps": {
+        "ingest": "Ingest",
+        "features": "Features",
+        "predict": "Predict",
+        "value": "Value",
+        "report": "Report"
+      },
+      "summaryEyebrow": "Prediction report",
+      "analyzedAt": "Analyzed at risk {value}/{max} ({bucket})",
+      "riskMeterLabel": "Analyzed risk",
+      "riskMeterAria": "Analyzed risk appetite",
+      "varianceReminder": "Higher risk means higher variance — never a guaranteed higher return.",
+      "modelVersion": "Model {version}",
+      "marketsEyebrow": "Market probabilities",
+      "marketsCaption": "Model probabilities are objective — they do not change with your risk setting.",
+      "bestBetEyebrow": "Best bet",
+      "bestBetBadge": "Best bet",
+      "alternativesEyebrow": "Alternatives",
+      "noValue": {
+        "title": "No value found at this risk level.",
+        "body": "Nothing cleared the gates for this appetite — an honest result, not a failure.",
+        "hint": "A higher risk setting MAY surface more selections. Remember: higher risk means more variance, not a higher expected return."
+      },
+      "rationale": {
+        "default": "Passed the risk profile's edge, confidence and market-variance checks."
+      },
+      "table": {
+        "market": "Market",
+        "selection": "Selection",
+        "model": "Model",
+        "implied": "Implied",
+        "edge": "Edge",
+        "ev": "EV",
+        "confidence": "Confidence",
+        "risk": "Risk",
+        "empty": "No market probabilities to show."
+      },
+      "metrics": {
+        "model": "Model",
+        "odds": "Odds",
+        "edge": "Edge",
+        "ev": "EV",
+        "rev": "Risk-adj. EV",
+        "stake": "Stake"
+      }
+    },
+    "confidence": {
+      "label": "Confidence",
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    },
+    "markets": {
+      "1X2": "1X2",
+      "DOUBLE_CHANCE": "Double chance",
+      "DNB": "Draw no bet",
+      "OU_0_5": "Over/Under 0.5",
+      "OU_1_5": "Over/Under 1.5",
+      "OU_2_5": "Over/Under 2.5",
+      "OU_3_5": "Over/Under 3.5",
+      "BTTS": "Both teams to score",
+      "AH": "Asian handicap",
+      "CORNERS_OU": "Corners Over/Under",
+      "TEAM_CORNERS": "Team corners",
+      "CARDS_OU": "Cards Over/Under",
+      "TEAM_CARDS": "Team cards",
+      "HTFT": "Half-time / Full-time",
+      "ANYTIME_SCORER": "Anytime scorer",
+      "CORRECT_SCORE": "Correct score"
+    },
+    "fixture": {
+      "vs": "vs",
+      "competition": "Competition",
+      "kickoff": "Kick-off",
+      "venue": "Venue",
+      "referee": "Referee",
+      "unknownVenue": "Venue TBC",
+      "unknownReferee": "Referee TBC"
+    }
+  },
   "risk": {
     "label": "Risk",
     "low": "Low",

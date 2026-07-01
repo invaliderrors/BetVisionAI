@@ -127,6 +127,133 @@
       "date": "Fecha"
     }
   },
+  "analysis": {
+    "search": {
+      "eyebrow": "Buscar un partido",
+      "title": "Analiza un partido",
+      "subtitle": "Busca un partido, ajusta tu apetito de riesgo y ejecuta un análisis calibrado.",
+      "label": "Buscar partidos",
+      "placeholder": "ej. Real Madrid vs Barcelona",
+      "hint": "Escribe al menos dos caracteres para buscar.",
+      "searching": "Buscando partidos",
+      "resultsLabel": "Candidatos rankeados",
+      "confidence": "Coincidencia",
+      "confidenceAria": "Confianza de coincidencia del partido",
+      "analyze": "Analizar",
+      "vs": "vs",
+      "noMatch": {
+        "title": "Ningún partido coincidió con esa búsqueda.",
+        "body": "Revisa la ortografía o prueba con uno de los equipos más parecidos.",
+        "suggestionsLabel": "Equipos más parecidos"
+      }
+    },
+    "slider": {
+      "eyebrow": "Apetito de riesgo",
+      "label": "Apetito de riesgo",
+      "aria": "Apetito de riesgo, de 0 a 100",
+      "valueText": "{value} de {max}, {bucket}",
+      "buckets": {
+        "conservative": {
+          "label": "Conservador",
+          "description": "Exige mayor ventaja y más confianza, y descarta mercados de alta varianza."
+        },
+        "balanced": {
+          "label": "Equilibrado",
+          "description": "Un punto medio entre ventaja, confianza y varianza del mercado."
+        },
+        "aggressive": {
+          "label": "Agresivo",
+          "description": "Acepta ventajas más ajustadas y mercados de mayor varianza para mostrar más selecciones."
+        }
+      }
+    },
+    "report": {
+      "fixtureEyebrow": "Partido",
+      "loadingFixture": "Cargando partido",
+      "analyzeCta": "Analizar",
+      "reanalyzeCta": "Reanalizar",
+      "analyzing": "Ejecutando análisis",
+      "stepsNote": "El análisis se ejecuta de forma síncrona por ahora. El progreso en vivo llegará con el pipeline asíncrono.",
+      "steps": {
+        "ingest": "Ingesta",
+        "features": "Features",
+        "predict": "Predicción",
+        "value": "Valor",
+        "report": "Informe"
+      },
+      "summaryEyebrow": "Informe de predicción",
+      "analyzedAt": "Analizado con riesgo {value}/{max} ({bucket})",
+      "riskMeterLabel": "Riesgo analizado",
+      "riskMeterAria": "Apetito de riesgo analizado",
+      "varianceReminder": "Más riesgo significa más varianza — nunca un mayor retorno garantizado.",
+      "modelVersion": "Modelo {version}",
+      "marketsEyebrow": "Probabilidades de mercado",
+      "marketsCaption": "Las probabilidades del modelo son objetivas — no cambian con tu ajuste de riesgo.",
+      "bestBetEyebrow": "Mejor apuesta",
+      "bestBetBadge": "Mejor apuesta",
+      "alternativesEyebrow": "Alternativas",
+      "noValue": {
+        "title": "No se encontró valor en este nivel de riesgo.",
+        "body": "Nada superó los filtros para este apetito — un resultado honesto, no un fallo.",
+        "hint": "Un ajuste de mayor riesgo PODRÍA mostrar más selecciones. Recuerda: más riesgo significa más varianza, no un mayor retorno esperado."
+      },
+      "rationale": {
+        "default": "Superó las comprobaciones de ventaja, confianza y varianza de mercado del perfil de riesgo."
+      },
+      "table": {
+        "market": "Mercado",
+        "selection": "Selección",
+        "model": "Modelo",
+        "implied": "Implícita",
+        "edge": "Ventaja",
+        "ev": "VE",
+        "confidence": "Confianza",
+        "risk": "Riesgo",
+        "empty": "No hay probabilidades de mercado que mostrar."
+      },
+      "metrics": {
+        "model": "Modelo",
+        "odds": "Cuota",
+        "edge": "Ventaja",
+        "ev": "VE",
+        "rev": "VE ajust. riesgo",
+        "stake": "Stake"
+      }
+    },
+    "confidence": {
+      "label": "Confianza",
+      "low": "Baja",
+      "medium": "Media",
+      "high": "Alta"
+    },
+    "markets": {
+      "1X2": "1X2",
+      "DOUBLE_CHANCE": "Doble oportunidad",
+      "DNB": "Empate no apuesta",
+      "OU_0_5": "Más/Menos 0.5",
+      "OU_1_5": "Más/Menos 1.5",
+      "OU_2_5": "Más/Menos 2.5",
+      "OU_3_5": "Más/Menos 3.5",
+      "BTTS": "Ambos equipos marcan",
+      "AH": "Hándicap asiático",
+      "CORNERS_OU": "Córners Más/Menos",
+      "TEAM_CORNERS": "Córners por equipo",
+      "CARDS_OU": "Tarjetas Más/Menos",
+      "TEAM_CARDS": "Tarjetas por equipo",
+      "HTFT": "Primera parte / Final",
+      "ANYTIME_SCORER": "Goleador en cualquier momento",
+      "CORRECT_SCORE": "Resultado exacto"
+    },
+    "fixture": {
+      "vs": "vs",
+      "competition": "Competición",
+      "kickoff": "Inicio",
+      "venue": "Sede",
+      "referee": "Árbitro",
+      "unknownVenue": "Sede por confirmar",
+      "unknownReferee": "Árbitro por confirmar"
+    }
+  },
   "risk": {
     "label": "Riesgo",
     "low": "Bajo",
