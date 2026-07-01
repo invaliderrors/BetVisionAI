@@ -19,6 +19,7 @@ const STATUS_BY_CODE: Readonly<Record<string, HttpStatus>> = {
   [DomainErrorCode.MATCH_NOT_FOUND]: HttpStatus.NOT_FOUND,
   [DomainErrorCode.TEAM_NOT_FOUND]: HttpStatus.NOT_FOUND,
   [DomainErrorCode.COMPETITION_NOT_FOUND]: HttpStatus.NOT_FOUND,
+  [DomainErrorCode.PREDICTION_NOT_FOUND]: HttpStatus.NOT_FOUND,
 };
 
 export function unwrap<T>(result: Result<T, DomainError>): T {

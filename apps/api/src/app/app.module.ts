@@ -19,6 +19,7 @@ import { UsersModule } from '../users/users.module';
 import { MatchesModule } from '../matches/matches.module';
 import { TeamsModule } from '../teams/teams.module';
 import { CompetitionsModule } from '../competitions/competitions.module';
+import { PredictionsModule } from '../predictions/predictions.module';
 import { AllExceptionsFilter } from '../common/exceptions/all-exceptions.filter';
 import { ResponseEnvelopeInterceptor } from '../common/http/response-envelope.interceptor';
 import { ensureCorrelationId } from '../common/correlation/correlation';
@@ -64,6 +65,7 @@ import { ensureCorrelationId } from '../common/correlation/correlation';
     MatchesModule,
     TeamsModule,
     CompetitionsModule,
+    PredictionsModule,
   ],
   providers: [
     {
