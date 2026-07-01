@@ -30,6 +30,9 @@ export * from './fakes/fake-token-service';
 export * from './fakes/fake-refresh-token-store';
 // features (Phase 9)
 export * from './fakes/fake-prediction-input-repository';
+// predictions (Phase 10)
+export * from './fakes/fake-prediction-repository';
+export * from './fakes/fake-prediction-result-repository';
 // object mothers
 export * from './mothers/vo.mother';
 export * from './mothers/model-score.mother';
