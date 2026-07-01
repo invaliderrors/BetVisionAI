@@ -8,6 +8,7 @@
   "dependencies": {
     "tslib": "^2.3.0",
     "@betvision/shared": "0.0.1",
-    "@betvision/domain": "0.0.1"
+    "@betvision/domain": "0.0.1",
+    "@betvision/contracts": "0.0.1"
   }
 }
