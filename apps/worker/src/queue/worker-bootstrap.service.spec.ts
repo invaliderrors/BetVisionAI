@@ -20,6 +20,8 @@ const testConfig: AppConfig = {
   },
   defaultLocale: 'en',
   providerKeys: {},
+  dataSourceMode: 'dev',
+  llmMode: 'dev',
 };
 
 /** Minimal in-memory fakes standing in for BullMQ's queue and its ioredis client. */
