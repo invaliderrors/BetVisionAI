@@ -37,6 +37,8 @@ export * from './fakes/fake-prediction-result-repository';
 export * from './fakes/fake-recommendation-repository';
 // AI-generated reports (Phase 12)
 export * from './fakes/fake-analysis-report-repository';
+// analyze any free-text fixture (LLM_RESEARCH slice)
+export * from './fakes/fake-fixture-research-provider';
 // object mothers
 export * from './mothers/vo.mother';
 export * from './mothers/model-score.mother';
