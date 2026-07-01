@@ -22,6 +22,7 @@ export const DomainErrorCode = {
   // domain gating / pipeline
   NO_VALUE_FOUND: 'domain.value.no_value_found',
   MARKET_NOT_SUPPORTED: 'domain.prediction.market_not_supported',
+  PREDICTION_NOT_FOUND: 'domain.prediction.not_found',
   // teams & matches (Phase 6) — aggregate invariants
   MATCH_TEAMS_IDENTICAL: 'domain.match.teams_identical',
   TEAM_NAME_REQUIRED: 'domain.team.name_required',
