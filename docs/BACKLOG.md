@@ -29,6 +29,14 @@ Running list of known follow-ups deliberately deferred during the phased build. 
 - **Endpoint publicity.** All `matches`/`teams`/`competitions` endpoints are `JwtAuthGuard`-protected. SPEC UX implies landing-page fixture **search** may be public — flip `GET /matches/search` (and possibly `teams` search) to public when the landing page is wired. *Deferred in Phase 6 → Phase 14.*
 - **Team stats / odds summary are stubs.** `GET /teams/:id/stats` returns an empty-safe typed stub and `matchDetail.oddsSummary` is `{available:false}` until ingestion/feature jobs and odds land. *Deferred in Phase 6 → Phases 8–11.*
 
+## Frontend (from Phase 13)
+
+- **Web builds with webpack, not Turbopack.** Turbopack hard-errors on `libs/contracts`/`libs/shared` because they declare `"type": "commonjs"` (correct for the NestJS backend) but are authored in ESM. `apps/web/project.json` pins `--webpack`. To re-enable Turbopack, have contracts/shared drop `"type"` or ship `.cjs`. *Deferred in Phase 13.*
+- **`middleware.ts` → `proxy.ts` rename.** Next 16 deprecation warning (benign; next-intl's `createMiddleware` still uses the middleware convention). *Deferred in Phase 13.*
+- **`libs/ui` declares `react` as a dependency, not a peer.** Works and lint-clean in this hoisted monorepo; move to peer if preferred. *Deferred in Phase 13.*
+- **Frontend stubs to wire.** Dashboard predictions/watchlist and match search are typed local stubs (`TODO(backend …)`) until `GET /predictions?mine`, `/watchlist`, `/matches/search` are consumed. *Deferred in Phase 13 → Phase 14/15.*
+- **RiskSlider not yet built.** The risk-appetite slider UI is deferred to Phase 14 (Match Analysis page). *Deferred in Phase 13 → Phase 14.*
+
 ## Resolved
 
 - ~~Match aggregate was minimal / name-resolution stopgap~~ — fleshed out with real FK ids in Phase 6 (round-trip test proves persisted `homeTeamId`/`seasonId` match input).
