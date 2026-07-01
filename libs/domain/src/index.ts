@@ -2,6 +2,12 @@
 export * from './base/entity';
 // entities
 export * from './matches/entities/match.entity';
+export * from './matches/entities/team.entity';
+export * from './matches/entities/competition.entity';
+export * from './matches/entities/season.entity';
+export * from './matches/entities/player.entity';
+export * from './matches/match-status';
+export * from './matches/read-models';
 export * from './users/entities/user.entity';
 // users (types + rbac)
 export * from './users/types';
@@ -33,6 +39,8 @@ export * from './ports/password-hasher.port';
 export * from './ports/token-service.port';
 export * from './ports/refresh-token-store.port';
 export * from './ports/match-repository.port';
+export * from './ports/team-repository.port';
+export * from './ports/competition-repository.port';
 export * from './ports/odds-repository.port';
 export * from './ports/sports-data-provider.port';
 export * from './ports/team-stats-provider.port';

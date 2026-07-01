@@ -3,6 +3,8 @@
 // NestJS @Inject(TOKEN), but is just a Symbol — no NestJS import here).
 
 export const MATCH_REPOSITORY = Symbol('MatchRepositoryPort');
+export const TEAM_REPOSITORY = Symbol('TeamRepositoryPort');
+export const COMPETITION_REPOSITORY = Symbol('CompetitionRepositoryPort');
 export const ODDS_REPOSITORY = Symbol('OddsRepositoryPort');
 export const SPORTS_DATA_PROVIDER = Symbol('SportsDataProviderPort');
 export const ODDS_PROVIDER = Symbol('OddsProviderPort');
