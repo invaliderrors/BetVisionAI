@@ -28,3 +28,5 @@ export * from './teams/get-team-stats.use-case';
 export * from './competitions/competition.mapper';
 export * from './competitions/list-competitions.use-case';
 export * from './competitions/get-competition-seasons.use-case';
+// features (Phase 9 — feature engineering pipeline)
+export * from './features/compute-features.use-case';
