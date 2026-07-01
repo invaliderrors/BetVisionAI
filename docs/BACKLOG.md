@@ -16,6 +16,15 @@ Running list of known follow-ups deliberately deferred during the phased build. 
 - **Prisma seed config deprecated.** `package.json#prisma` seed config is deprecated; migrate to `prisma.config.ts`. *Deferred in Phase 4.*
 - **Testcontainers not used.** DB-backed tests run against the compose Postgres (moved to host port 55432 due to a native Postgres on 5432) rather than Testcontainers, for Windows reliability. Consider wiring Testcontainers in CI. *Deferred in Phase 4.*
 
+## Auth / Security (from Phase 5)
+
+- **Notification adapter is a no-op.** `LogNotificationAdapter` only logs; password-reset emails and report-ready notifications need a real email/push adapter. *Deferred in Phase 5 → wire in the notifications work (around Phase 12).*
+- **Reset tokens stored raw in cache.** Password-reset tokens are kept unhashed in Redis; hash-at-rest. *Deferred in Phase 5 → Phase 18 hardening.*
+- **No constant-time dummy verify on unknown email.** Login returns a generic error for unknown emails without a dummy hash verify, leaving a timing side-channel. Add a constant-time dummy hash. *Deferred in Phase 5 → Phase 18.*
+- **No FREE subscription on register.** SPEC has User 1:1 Subscription, but registration does not auto-create a subscription row. *Deferred in Phase 5 → when the subscriptions module lands.*
+- **OAuth / MFA (TOTP) not implemented.** SPEC lists them as optional. *Deferred in Phase 5 → Phase 18 / later.*
+- **Full rate-limit hardening.** Only lenient throttling is wired; brute-force lockout, captcha, CORS allow-list are pending. *Deferred in Phase 5 → Phase 18.*
+
 ## Resolved
 
 - ~~API readiness DB check stub~~ — wired to a real Prisma `SELECT 1` in Phase 4.
