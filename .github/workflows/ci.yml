@@ -1,0 +1,78 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Cancel superseded runs on the same ref (saves CI minutes on rapid pushes).
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # Lint + test + build, scoped to affected projects for speed.
+  # ---------------------------------------------------------------------------
+  main:
+    name: Lint / Test / Build (affected)
+    runs-on: ubuntu-latest
+    steps:
+      # fetch-depth: 0 gives `nx affected` the full history it needs to diff
+      # against the base branch (PR target) or last successful commit (push).
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Derives the correct base/head SHAs for `nx affected` and, on PRs,
+      # fetches the base branch so the diff resolves.
+      - name: Derive affected SHAs
+        uses: nrwl/nx-set-shas@v4
+
+      - name: Lint, test & build affected projects
+        run: npx nx affected -t lint test build
+
+  # ---------------------------------------------------------------------------
+  # FUTURE (Phase 19 CD) — enable once staging/prod infra + secrets exist.
+  # Kept commented so CI stays green with the current skeleton.
+  # ---------------------------------------------------------------------------
+  #
+  # migrate-and-deploy:
+  #   name: Migrate & Deploy (staging)
+  #   needs: main
+  #   if: github.ref == 'refs/heads/main'
+  #   runs-on: ubuntu-latest
+  #   environment: staging
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 20
+  #         cache: npm
+  #     - run: npm ci
+  #     # Reversible, gated schema migrations before rollout.
+  #     - name: Run database migrations
+  #       run: npx prisma migrate deploy
+  #       env:
+  #         DATABASE_URL: ${{ secrets.DATABASE_URL }}
+  #     # Build + push immutable images tagged by commit SHA, then promote-by-tag.
+  #     - name: Build & push images
+  #       run: |
+  #         echo "docker build/push api|worker|web tagged ${{ github.sha }}"
+  #     - name: Deploy to staging
+  #       run: echo "promote ${{ github.sha }} to staging"
