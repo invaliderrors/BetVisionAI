@@ -16,6 +16,9 @@ const STATUS_BY_CODE: Readonly<Record<string, HttpStatus>> = {
   [DomainErrorCode.ACCOUNT_NOT_ACTIVE]: HttpStatus.FORBIDDEN,
   [DomainErrorCode.FORBIDDEN]: HttpStatus.FORBIDDEN,
   [DomainErrorCode.USER_NOT_FOUND]: HttpStatus.NOT_FOUND,
+  [DomainErrorCode.MATCH_NOT_FOUND]: HttpStatus.NOT_FOUND,
+  [DomainErrorCode.TEAM_NOT_FOUND]: HttpStatus.NOT_FOUND,
+  [DomainErrorCode.COMPETITION_NOT_FOUND]: HttpStatus.NOT_FOUND,
 };
 
 export function unwrap<T>(result: Result<T, DomainError>): T {

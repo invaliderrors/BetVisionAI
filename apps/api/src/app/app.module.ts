@@ -16,6 +16,9 @@ import { i18nOptions } from './i18n.options';
 import { HealthModule } from '../health/health.module';
 import { AuthModule } from '../auth/auth.module';
 import { UsersModule } from '../users/users.module';
+import { MatchesModule } from '../matches/matches.module';
+import { TeamsModule } from '../teams/teams.module';
+import { CompetitionsModule } from '../competitions/competitions.module';
 import { AllExceptionsFilter } from '../common/exceptions/all-exceptions.filter';
 import { ResponseEnvelopeInterceptor } from '../common/http/response-envelope.interceptor';
 import { ensureCorrelationId } from '../common/correlation/correlation';
@@ -58,6 +61,9 @@ import { ensureCorrelationId } from '../common/correlation/correlation';
     HealthModule,
     AuthModule,
     UsersModule,
+    MatchesModule,
+    TeamsModule,
+    CompetitionsModule,
   ],
   providers: [
     {
