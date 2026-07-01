@@ -6,6 +6,9 @@
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
   "dependencies": {
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.22.0",
+    "react": "^19.0.0",
     "tslib": "^2.3.0"
   }
 }
