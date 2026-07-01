@@ -19,6 +19,11 @@ export const FEATURE_STORE = Symbol('FeatureStorePort');
 export const PREDICTION_MODEL = Symbol('PredictionModelPort');
 export const AUDIT_LOG = Symbol('AuditLogPort');
 export const NOTIFICATION = Symbol('NotificationPort');
+// Auth / accounts (Phase 5)
+export const USER_REPOSITORY = Symbol('UserRepositoryPort');
+export const PASSWORD_HASHER = Symbol('PasswordHasherPort');
+export const TOKEN_SERVICE = Symbol('TokenServicePort');
+export const REFRESH_TOKEN_STORE = Symbol('RefreshTokenStorePort');
 export const I18N = Symbol('I18nPort');
 export const CLOCK = Symbol('ClockPort');
 export const ID_GENERATOR = Symbol('IdGeneratorPort');

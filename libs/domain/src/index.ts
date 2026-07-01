@@ -2,7 +2,14 @@
 export * from './base/entity';
 // entities
 export * from './matches/entities/match.entity';
+export * from './users/entities/user.entity';
+// users (types + rbac)
+export * from './users/types';
+export * from './users/role-permissions';
 // value objects
+export * from './value-objects/email';
+export * from './value-objects/password-hash';
+export * from './value-objects/password-policy';
 export * from './value-objects/probability';
 export * from './value-objects/odds';
 export * from './value-objects/implied-probability';
@@ -21,6 +28,10 @@ export * from './services/kelly-stake.service';
 export * from './services/risk-profile.service';
 // ports + tokens
 export * from './ports/shared.dto';
+export * from './ports/user-repository.port';
+export * from './ports/password-hasher.port';
+export * from './ports/token-service.port';
+export * from './ports/refresh-token-store.port';
 export * from './ports/match-repository.port';
 export * from './ports/odds-repository.port';
 export * from './ports/sports-data-provider.port';
