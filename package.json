@@ -8,7 +8,17 @@
     "build": "nx run-many -t build",
     "typecheck": "nx run-many -t build",
     "verify": "nx run-many -t lint test build",
-    "graph": "nx graph"
+    "graph": "nx graph",
+    "prisma:generate": "prisma generate --schema=libs/infrastructure/prisma/schema.prisma",
+    "db:migrate": "prisma migrate deploy --schema=libs/infrastructure/prisma/schema.prisma",
+    "db:migrate:dev": "prisma migrate dev --schema=libs/infrastructure/prisma/schema.prisma",
+    "db:seed": "prisma db seed",
+    "migration:generate": "prisma migrate dev --create-only --schema=libs/infrastructure/prisma/schema.prisma",
+    "migration:run": "prisma migrate deploy --schema=libs/infrastructure/prisma/schema.prisma",
+    "migration:revert": "node -e \"console.log('Prisma has no per-migration revert. Dev: npx prisma migrate reset (DROPS DATA). Prod: author an explicit down migration.')\""
+  },
+  "prisma": {
+    "seed": "node -r @swc-node/register libs/infrastructure/prisma/seed.ts"
   },
   "private": true,
   "devDependencies": {
@@ -54,6 +64,7 @@
     "nx": "23.0.1",
     "postcss": "^8.5.16",
     "prettier": "~3.6.2",
+    "prisma": "^6.19.3",
     "supertest": "^7.2.2",
     "tailwindcss": "^4.3.2",
     "ts-jest": "^29.4.0",
@@ -70,6 +81,7 @@
     "@nestjs/core": "^11.0.0",
     "@nestjs/platform-express": "^11.0.0",
     "@nestjs/swagger": "^11.4.5",
+    "@prisma/client": "^6.19.3",
     "bullmq": "^5.79.2",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.15.1",
