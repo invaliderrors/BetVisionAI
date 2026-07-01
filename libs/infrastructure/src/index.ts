@@ -19,6 +19,20 @@ export * from './prisma/prisma.module';
 export * from './system/system-clock';
 export * from './system/uuid-id-generator';
 
+// Phase-7 dev slice: DETERMINISTIC SYNTHETIC provider adapters (provenance DEV_SYNTHETIC), bound
+// behind DATA_SOURCE_MODE=dev. Replaced by real licensed adapters in the live slice.
+export * from './providers/dev/dev-synthetic';
+export * from './providers/dev/dev-sports-data.provider';
+export * from './providers/dev/dev-team-stats.provider';
+export * from './providers/dev/dev-player-stats.provider';
+export * from './providers/dev/dev-odds.provider';
+export * from './providers/dev/dev-providers.module';
+
+// Phase-9: feature store (Redis) + PredictionInput persistence (Prisma) + wiring module.
+export * from './features/redis-feature-store';
+export * from './features/prisma-prediction-input.repository';
+export * from './features/features.module';
+
 // Auth / security adapters (Phase 5). The @Global AuthInfraModule binds them to their
 // domain port tokens; the classes are exported for explicit composition/tests. The Prisma
 // user repository + audit adapter stay internal (bound only via AuthInfraModule).

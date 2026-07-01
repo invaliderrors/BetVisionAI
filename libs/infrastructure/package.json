@@ -12,6 +12,7 @@
     "argon2": "^0.44.0",
     "ioredis": "^5.11.1",
     "jsonwebtoken": "^9.0.2",
+    "@betvision/application": "0.0.1",
     "@betvision/config": "0.0.1",
     "@betvision/domain": "0.0.1",
     "@betvision/shared": "0.0.1"
