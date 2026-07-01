@@ -16,6 +16,7 @@ export const TEAM_STATS_PROVIDER = Symbol('TeamStatsProviderPort');
 export const PLAYER_STATS_PROVIDER = Symbol('PlayerStatsProviderPort');
 export const LLM_EXPLANATION = Symbol('LlmExplanationPort');
 export const RAG_RETRIEVER = Symbol('RagRetrieverPort');
+export const FIXTURE_RESEARCH_PROVIDER = Symbol('FixtureResearchPort');
 export const CACHE = Symbol('CachePort');
 export const FEATURE_STORE = Symbol('FeatureStorePort');
 export const PREDICTION_INPUT_REPOSITORY = Symbol('PredictionInputRepositoryPort');

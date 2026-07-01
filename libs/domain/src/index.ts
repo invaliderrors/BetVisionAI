@@ -74,6 +74,7 @@ export * from './ports/recommendation-repository.port';
 export * from './ports/analysis-report-repository.port';
 export * from './ports/llm-explanation.port';
 export * from './ports/rag-retriever.port';
+export * from './ports/fixture-research.port';
 export * from './ports/cache.port';
 export * from './ports/audit-log.port';
 export * from './ports/notification.port';
