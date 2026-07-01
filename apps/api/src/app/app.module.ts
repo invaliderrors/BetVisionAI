@@ -21,6 +21,7 @@ import { TeamsModule } from '../teams/teams.module';
 import { CompetitionsModule } from '../competitions/competitions.module';
 import { PredictionsModule } from '../predictions/predictions.module';
 import { ReportsModule } from '../reports/reports.module';
+import { AnalyzeModule } from '../analyze/analyze.module';
 import { AllExceptionsFilter } from '../common/exceptions/all-exceptions.filter';
 import { ResponseEnvelopeInterceptor } from '../common/http/response-envelope.interceptor';
 import { ensureCorrelationId } from '../common/correlation/correlation';
@@ -68,6 +69,7 @@ import { ensureCorrelationId } from '../common/correlation/correlation';
     CompetitionsModule,
     PredictionsModule,
     ReportsModule,
+    AnalyzeModule,
   ],
   providers: [
     {
