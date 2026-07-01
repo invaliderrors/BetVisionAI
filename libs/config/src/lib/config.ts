@@ -11,6 +11,14 @@ export const SUPPORTED_LOCALES = ['en', 'es'] as const;
 export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number];
 
 /**
+ * Where outbound sports/odds data comes from. `dev` binds the DETERMINISTIC SYNTHETIC provider
+ * adapters (Phase-7 dev slice, provenance DEV_SYNTHETIC); `live` will bind the real, licensed
+ * adapters once they land. Defaults to `dev` because no live adapter exists yet.
+ */
+export const DATA_SOURCE_MODES = ['dev', 'live'] as const;
+export type DataSourceMode = (typeof DATA_SOURCE_MODES)[number];
+
+/**
  * DI token for the resolved {@link AppConfig}. It is a plain `Symbol`, so it stays
  * framework-agnostic (works with NestJS `@Inject(APP_CONFIG)` without importing Nest here).
  */
@@ -30,6 +38,7 @@ const envSchema = z.object({
   JWT_ACCESS_TTL: z.coerce.number().int().positive().default(900),
   JWT_REFRESH_TTL: z.coerce.number().int().positive().default(604800),
   DEFAULT_LOCALE: z.enum(SUPPORTED_LOCALES).default('en'),
+  DATA_SOURCE_MODE: z.enum(DATA_SOURCE_MODES).default('dev'),
   // Optional provider / LLM keys — present in prod, absent in most local/test runs.
   ANTHROPIC_API_KEY: z.string().optional(),
   SPORTS_DATA_API_KEY: z.string().optional(),
@@ -69,6 +78,7 @@ export interface AppConfig {
   readonly redisUrl: string;
   readonly jwt: JwtConfig;
   readonly defaultLocale: SupportedLocale;
+  readonly dataSourceMode: DataSourceMode;
   readonly anthropicApiKey?: string;
   readonly providerKeys: ProviderKeys;
 }
@@ -116,6 +126,7 @@ export function loadConfig(
       refreshTtlSeconds: env.JWT_REFRESH_TTL,
     },
     defaultLocale: env.DEFAULT_LOCALE,
+    dataSourceMode: env.DATA_SOURCE_MODE,
     anthropicApiKey: env.ANTHROPIC_API_KEY,
     providerKeys: {
       sportsData: env.SPORTS_DATA_API_KEY,

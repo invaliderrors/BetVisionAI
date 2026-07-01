@@ -27,7 +27,16 @@ describe('loadConfig', () => {
     expect(config.jwt.accessSecret).toBe('a'.repeat(32));
     expect(config.jwt.accessTtlSeconds).toBe(900); // default applied
     expect(config.jwt.refreshTtlSeconds).toBe(604800); // default applied
+    expect(config.dataSourceMode).toBe('dev'); // default applied
     expect(config.providerKeys.odds).toBeUndefined();
+  });
+
+  it('parses an explicit DATA_SOURCE_MODE and rejects an unknown one', () => {
+    const live = loadConfig({ ...validEnv(), DATA_SOURCE_MODE: 'live' });
+    expect(live.dataSourceMode).toBe('live');
+    expect(() => loadConfig({ ...validEnv(), DATA_SOURCE_MODE: 'satellite' })).toThrow(
+      EnvValidationError,
+    );
   });
 
   it('applies documented defaults for optional values', () => {
