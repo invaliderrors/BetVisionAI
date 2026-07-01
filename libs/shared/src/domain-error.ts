@@ -22,6 +22,17 @@ export const DomainErrorCode = {
   // domain gating / pipeline
   NO_VALUE_FOUND: 'domain.value.no_value_found',
   MARKET_NOT_SUPPORTED: 'domain.prediction.market_not_supported',
+  // teams & matches (Phase 6) — aggregate invariants
+  MATCH_TEAMS_IDENTICAL: 'domain.match.teams_identical',
+  TEAM_NAME_REQUIRED: 'domain.team.name_required',
+  COMPETITION_NAME_REQUIRED: 'domain.competition.name_required',
+  SEASON_LABEL_REQUIRED: 'domain.season.label_required',
+  PLAYER_NAME_REQUIRED: 'domain.player.name_required',
+  // teams & matches (Phase 6) — use-case outcomes
+  FIXTURE_QUERY_EMPTY: 'domain.match.fixture_query_empty',
+  MATCH_NOT_FOUND: 'domain.match.not_found',
+  TEAM_NOT_FOUND: 'domain.team.not_found',
+  COMPETITION_NOT_FOUND: 'domain.competition.not_found',
   // auth / account (Phase 5) — value-object + policy validation
   EMAIL_INVALID: 'domain.auth.email_invalid',
   PASSWORD_TOO_SHORT: 'domain.auth.password_too_short',
