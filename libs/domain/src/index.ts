@@ -27,7 +27,11 @@ export * from './value-objects/stake';
 export * from './value-objects/money';
 export * from './value-objects/levels';
 export * from './value-objects/market';
+export * from './value-objects/odds-market-mapping';
 export * from './value-objects/risk-appetite';
+// recommendations (Phase 11 — value betting aggregate)
+export * from './recommendations/value-ranking';
+export * from './recommendations/recommendation.entity';
 // services
 export * from './services/prob-math';
 export * from './services/elo-rating.service';
@@ -63,6 +67,7 @@ export * from './ports/prediction-input-repository.port';
 export * from './ports/prediction-model.port';
 export * from './ports/prediction-repository.port';
 export * from './ports/prediction-result-repository.port';
+export * from './ports/recommendation-repository.port';
 export * from './ports/llm-explanation.port';
 export * from './ports/rag-retriever.port';
 export * from './ports/cache.port';
