@@ -15,7 +15,12 @@ module.exports = {
       compiler: 'tsc',
       main: './src/main.ts',
       tsConfig: './tsconfig.app.json',
-      assets: ['./src/assets'],
+      assets: [
+        './src/assets',
+        // Ship i18n catalogs next to the bundle so `join(__dirname, 'i18n')` resolves
+        // at runtime (dist/apps/api/i18n) exactly as it does under ts-jest (src/app/i18n).
+        { glob: '**/*', input: './src/app/i18n', output: 'i18n' },
+      ],
       optimization: false,
       outputHashing: 'none',
       generatePackageJson: true,

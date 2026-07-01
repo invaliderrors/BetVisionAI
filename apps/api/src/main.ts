@@ -1,21 +1,48 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
-import { Logger } from '@nestjs/common';
+import { Logger as NestLogger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import helmet from 'helmet';
+import { Logger } from 'nestjs-pino';
+import { APP_CONFIG, type AppConfig } from '@betvision/config';
 import { AppModule } from './app/app.module';
+import { correlationIdMiddleware } from './common/correlation/correlation-id.middleware';
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  const globalPrefix = 'api';
-  app.setGlobalPrefix(globalPrefix);
-  const port = process.env.PORT || 3000;
-  await app.listen(port);
-  Logger.log(
-    `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`,
-  );
+async function bootstrap(): Promise<void> {
+  const app = await NestFactory.create(AppModule, { bufferLogs: true });
+
+  // Structured JSON logging via pino for all subsequent Nest logs.
+  app.useLogger(app.get(Logger));
+
+  app.use(helmet());
+  app.use(correlationIdMiddleware);
+  app.setGlobalPrefix('api');
+  app.enableShutdownHooks();
+
+  const config = app.get<AppConfig>(APP_CONFIG);
+
+  const swaggerConfig = new DocumentBuilder()
+    .setTitle('BetVision AI API')
+    .setDescription('BetVision AI backend API (REST)')
+    .setVersion('0.1.0')
+    .addBearerAuth()
+    .build();
+  const document = SwaggerModule.createDocument(app, swaggerConfig);
+  SwaggerModule.setup('api/docs', app, document);
+
+  await app.listen(config.port);
+
+  app
+    .get(Logger)
+    .log(
+      `API listening on http://localhost:${config.port}/api (docs: /api/docs)`,
+    );
 }
 
-bootstrap();
+bootstrap().catch((error: unknown) => {
+  // Fail-fast: invalid env or a boot error must abort with a clear message.
+  new NestLogger('Bootstrap').error(
+    error instanceof Error ? error.message : String(error),
+    error instanceof Error ? error.stack : undefined,
+  );
+  process.exit(1);
+});
