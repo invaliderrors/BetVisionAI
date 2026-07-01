@@ -1,6 +1,7 @@
 // libs/domain/src/value-objects/market.ts
 // Market taxonomy. `MarketGroup` is what Risk Appetite filters on (conservative
 // excludes high-variance groups like correct-score / anytime-scorer).
+import { RiskLevel } from './levels';
 
 export enum MarketGroup {
   Result = 'result', // 1X2, Double Chance, Draw No Bet
@@ -47,4 +48,28 @@ export const MARKET_GROUP: Readonly<Record<MarketKey, MarketGroup>> = {
   HTFT: MarketGroup.Specials,
   ANYTIME_SCORER: MarketGroup.Specials,
   CORRECT_SCORE: MarketGroup.Specials,
+};
+
+/**
+ * Per-market intrinsic volatility baseline — the model's structural variance for a market,
+ * independent of any single prediction. Mirrors the seeded BettingMarket.volatility column and
+ * drives Risk Appetite gating (Feature Spec B). Correct-score / scorers / HT-FT are HIGH.
+ */
+export const MARKET_VOLATILITY_BASELINE: Readonly<Record<MarketKey, RiskLevel>> = {
+  '1X2': RiskLevel.Low,
+  DOUBLE_CHANCE: RiskLevel.Low,
+  DNB: RiskLevel.Low,
+  OU_0_5: RiskLevel.Medium,
+  OU_1_5: RiskLevel.Low,
+  OU_2_5: RiskLevel.Low,
+  OU_3_5: RiskLevel.Medium,
+  BTTS: RiskLevel.Low,
+  AH: RiskLevel.Medium,
+  CORNERS_OU: RiskLevel.Medium,
+  TEAM_CORNERS: RiskLevel.Medium,
+  CARDS_OU: RiskLevel.Medium,
+  TEAM_CARDS: RiskLevel.Medium,
+  HTFT: RiskLevel.High,
+  ANYTIME_SCORER: RiskLevel.High,
+  CORRECT_SCORE: RiskLevel.High,
 };
