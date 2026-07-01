@@ -4,6 +4,12 @@
     "jsx": "preserve",
     "strict": true,
     "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@betvision/ui": ["../../libs/ui/src/index.ts"],
+      "@betvision/contracts": ["../../libs/contracts/src/index.ts"],
+      "@betvision/shared": ["../../libs/shared/src/index.ts"]
+    },
     "emitDeclarationOnly": false,
     "esModuleInterop": true,
     "module": "esnext",
@@ -35,9 +41,15 @@
     "node_modules",
     "jest.config.ts",
     "jest.config.cts",
+    "jest.setup.ts",
     "**/*.spec.ts",
     "**/*.test.ts",
+    "**/*.spec.tsx",
+    "**/*.test.tsx",
     "src/**/*.spec.ts",
-    "src/**/*.test.ts"
+    "src/**/*.test.ts",
+    "src/**/*.spec.tsx",
+    "src/**/*.test.tsx",
+    "src/test/**"
   ]
 }

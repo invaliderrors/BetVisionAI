@@ -1,16 +1,16 @@
-//@ts-check
-
 const { join } = require('path');
+const createNextIntlPlugin = require('next-intl/plugin');
+
+// Points next-intl at the per-request i18n config (locale + message catalog).
+const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Pin the workspace root so Turbopack does not get confused by other
-  // lockfiles outside the monorepo (silences the "inferred workspace root" warning).
+  // Pin the workspace root so Turbopack does not get confused by other lockfiles outside the
+  // monorepo (silences the "inferred workspace root" warning).
   turbopack: {
     root: join(__dirname, '..', '..'),
   },
-  // Next.js options go here
-  // See: https://nextjs.org/docs/app/api-reference/config/next-config-js
 };
 
-module.exports = nextConfig;
+module.exports = withNextIntl(nextConfig);
