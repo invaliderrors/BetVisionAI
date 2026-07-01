@@ -35,3 +35,7 @@ export * from './predictions/run-prediction.use-case';
 // value betting (Phase 11 — odds + risk appetite)
 export * from './predictions/detect-value-bets.use-case';
 export * from './predictions/get-prediction.use-case';
+// AI-generated reports (Phase 12 — LLM + RAG, bilingual)
+export * from './reports/template-narrative';
+export * from './reports/generate-report.use-case';
+export * from './reports/get-report.use-case';
