@@ -25,6 +25,8 @@ export const DomainErrorCode = {
   PREDICTION_NOT_FOUND: 'domain.prediction.not_found',
   // AI-generated reports (Phase 12)
   REPORT_NOT_FOUND: 'domain.report.not_found',
+  // AI-assisted fixture research (LLM_RESEARCH slice)
+  FIXTURE_RESEARCH_FAILED: 'domain.analyze.research_failed',
   // teams & matches (Phase 6) — aggregate invariants
   MATCH_TEAMS_IDENTICAL: 'domain.match.teams_identical',
   TEAM_NAME_REQUIRED: 'domain.team.name_required',
