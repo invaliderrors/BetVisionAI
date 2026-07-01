@@ -29,7 +29,6 @@ const testConfig: AppConfig = {
   defaultLocale: 'en',
   dataSourceMode: 'dev',
   llmMode: 'dev',
-  providerKeys: {},
 };
 
 /** Test-only controller that raises a domain error (code + params, never a localized string). */

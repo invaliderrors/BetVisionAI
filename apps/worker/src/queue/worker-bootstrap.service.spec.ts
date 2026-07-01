@@ -19,7 +19,6 @@ const testConfig: AppConfig = {
     refreshTtlSeconds: 604800,
   },
   defaultLocale: 'en',
-  providerKeys: {},
   dataSourceMode: 'dev',
   llmMode: 'dev',
 };

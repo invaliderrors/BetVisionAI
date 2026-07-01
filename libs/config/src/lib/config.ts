@@ -11,11 +11,16 @@ export const SUPPORTED_LOCALES = ['en', 'es'] as const;
 export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number];
 
 /**
- * Where outbound sports/odds data comes from. `dev` binds the DETERMINISTIC SYNTHETIC provider
- * adapters (Phase-7 dev slice, provenance DEV_SYNTHETIC); `live` will bind the real, licensed
- * adapters once they land. Defaults to `dev` because no live adapter exists yet.
+ * Where outbound sports/odds data comes from.
+ * - `dev` binds the DETERMINISTIC SYNTHETIC provider adapters (provenance DEV_SYNTHETIC).
+ * - `research` binds the LLM research provider: given a free-text fixture it uses Claude (with web
+ *   search) to gather recent context (form, head-to-head, injuries) and estimate the quantitative
+ *   inputs + market odds. Provenance LLM_RESEARCH — AI-ESTIMATED, not a licensed feed. Requires
+ *   ANTHROPIC_API_KEY.
+ * - `live` will bind real, licensed adapters once/if they land.
+ * Defaults to `dev` because no live licensed adapter exists yet.
  */
-export const DATA_SOURCE_MODES = ['dev', 'live'] as const;
+export const DATA_SOURCE_MODES = ['dev', 'research', 'live'] as const;
 export type DataSourceMode = (typeof DATA_SOURCE_MODES)[number];
 
 /**
@@ -49,14 +54,9 @@ const envSchema = z.object({
   DEFAULT_LOCALE: z.enum(SUPPORTED_LOCALES).default('en'),
   DATA_SOURCE_MODE: z.enum(DATA_SOURCE_MODES).default('dev'),
   LLM_MODE: z.enum(LLM_MODES).default('dev'),
-  // Optional provider / LLM keys — present in prod, absent in most local/test runs.
+  // Anthropic key — required in practice for `research` data mode and `live` LLM mode;
+  // optional here so dev/test runs boot without it.
   ANTHROPIC_API_KEY: z.string().optional(),
-  SPORTS_DATA_API_KEY: z.string().optional(),
-  ODDS_API_KEY: z.string().optional(),
-  INJURIES_API_KEY: z.string().optional(),
-  LINEUPS_API_KEY: z.string().optional(),
-  REFEREE_API_KEY: z.string().optional(),
-  WEATHER_API_KEY: z.string().optional(),
 });
 
 export type RawEnv = z.infer<typeof envSchema>;
@@ -67,16 +67,6 @@ export interface JwtConfig {
   readonly refreshSecret: string;
   readonly accessTtlSeconds: number;
   readonly refreshTtlSeconds: number;
-}
-
-/** Optional external-provider API keys, wired to their ports in later phases. */
-export interface ProviderKeys {
-  readonly sportsData?: string;
-  readonly odds?: string;
-  readonly injuries?: string;
-  readonly lineups?: string;
-  readonly referee?: string;
-  readonly weather?: string;
 }
 
 /** The fully typed, validated application configuration (camelCase per TS conventions). */
@@ -91,7 +81,6 @@ export interface AppConfig {
   readonly dataSourceMode: DataSourceMode;
   readonly llmMode: LlmMode;
   readonly anthropicApiKey?: string;
-  readonly providerKeys: ProviderKeys;
 }
 
 /** Thrown when env validation fails. Carries every issue so boot logs are actionable. */
@@ -140,13 +129,5 @@ export function loadConfig(
     dataSourceMode: env.DATA_SOURCE_MODE,
     llmMode: env.LLM_MODE,
     anthropicApiKey: env.ANTHROPIC_API_KEY,
-    providerKeys: {
-      sportsData: env.SPORTS_DATA_API_KEY,
-      odds: env.ODDS_API_KEY,
-      injuries: env.INJURIES_API_KEY,
-      lineups: env.LINEUPS_API_KEY,
-      referee: env.REFEREE_API_KEY,
-      weather: env.WEATHER_API_KEY,
-    },
   };
 }

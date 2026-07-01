@@ -22,7 +22,6 @@ const testConfig: AppConfig = {
   defaultLocale: 'en',
   dataSourceMode: 'dev',
   llmMode: 'dev',
-  providerKeys: {},
 };
 
 interface FakeRedis {

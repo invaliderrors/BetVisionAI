@@ -30,7 +30,6 @@ describe('loadConfig', () => {
     expect(config.dataSourceMode).toBe('dev'); // default applied
     expect(config.llmMode).toBe('dev'); // default applied
     expect(config.anthropicApiKey).toBeUndefined();
-    expect(config.providerKeys.odds).toBeUndefined();
   });
 
   it('parses an explicit DATA_SOURCE_MODE and rejects an unknown one', () => {
