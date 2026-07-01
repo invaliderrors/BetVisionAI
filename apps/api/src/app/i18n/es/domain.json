@@ -26,6 +26,9 @@
   "report": {
     "not_found": "Informe no encontrado."
   },
+  "analyze": {
+    "research_failed": "No pudimos investigar ese partido en este momento. Inténtalo de nuevo o precisa los nombres de los equipos (p. ej. \"Portugal vs España\")."
+  },
   "match": {
     "teams_identical": "Un partido no puede tener el mismo equipo en ambos lados.",
     "fixture_query_empty": "Introduce un partido para buscar, p. ej. \"Real Madrid vs Barcelona\".",

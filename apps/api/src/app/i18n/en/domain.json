@@ -26,6 +26,9 @@
   "report": {
     "not_found": "Report not found."
   },
+  "analyze": {
+    "research_failed": "We could not research that fixture right now. Please try again, or refine the team names (e.g. \"Portugal vs Spain\")."
+  },
   "match": {
     "teams_identical": "A match cannot have the same team on both sides.",
     "fixture_query_empty": "Enter a fixture to search, e.g. \"Real Madrid vs Barcelona\".",
