@@ -18,6 +18,25 @@
   "prediction": {
     "market_not_supported": "The requested market is not supported."
   },
+  "match": {
+    "teams_identical": "A match cannot have the same team on both sides.",
+    "fixture_query_empty": "Enter a fixture to search, e.g. \"Real Madrid vs Barcelona\".",
+    "not_found": "Match not found."
+  },
+  "team": {
+    "name_required": "Team name is required.",
+    "not_found": "Team not found."
+  },
+  "competition": {
+    "name_required": "Competition name is required.",
+    "not_found": "Competition not found."
+  },
+  "season": {
+    "label_required": "Season label is required."
+  },
+  "player": {
+    "name_required": "Player name is required."
+  },
   "auth": {
     "email_invalid": "Please enter a valid email address.",
     "password_too_short": "Password must be at least {min} characters long.",
