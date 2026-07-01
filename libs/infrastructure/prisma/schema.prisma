@@ -178,6 +178,8 @@ model User {
   // Responsible-gambling self-limits (SPEC §8). Null = no self-limit set.
   selfLimitJson  Json?
   selfExcludedAt DateTime?
+  // Free-form per-user UI/app settings (PATCH /users/me — Phase 5). Null = defaults.
+  settings       Json?
   createdAt      DateTime   @default(now())
   updatedAt      DateTime   @updatedAt
   deletedAt      DateTime? // GDPR soft delete
