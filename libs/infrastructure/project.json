@@ -1,0 +1,19 @@
+{
+  "name": "infrastructure",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/infrastructure/src",
+  "projectType": "library",
+  "tags": ["type:infra"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/infrastructure",
+        "main": "libs/infrastructure/src/index.ts",
+        "tsConfig": "libs/infrastructure/tsconfig.lib.json",
+        "assets": ["libs/infrastructure/*.md"]
+      }
+    }
+  }
+}
