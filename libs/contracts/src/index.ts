@@ -5,3 +5,4 @@ export * from './lib/teams';
 export * from './lib/competitions';
 export * from './lib/matches';
 export * from './lib/predictions';
+export * from './lib/reports';
