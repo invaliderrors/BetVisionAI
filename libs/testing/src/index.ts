@@ -28,8 +28,11 @@ export * from './fakes/fake-user-repository';
 export * from './fakes/fake-password-hasher';
 export * from './fakes/fake-token-service';
 export * from './fakes/fake-refresh-token-store';
+// features (Phase 9)
+export * from './fakes/fake-prediction-input-repository';
 // object mothers
 export * from './mothers/vo.mother';
 export * from './mothers/model-score.mother';
 export * from './mothers/match.mother';
 export * from './mothers/explanation.mother';
+export * from './mothers/feature.mother';
